@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Color(Yan) He</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --r: #ff3b3b;
+      --o: #ff8c00;
+      --y: #f5c800;
+      --g: #00c97a;
+      --b: #1e90ff;
+      --v: #a855f7;
+      --bg: #0a0a0a;
+      --fg: #f0ede8;
+      --muted: #888;
+      --card: #111;
+      --border: #222;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: screen;
+      transition: transform 0.15s ease;
+      background: conic-gradient(var(--r), var(--o), var(--y), var(--g), var(--b), var(--v), var(--r));
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      pointer-events: none;
+      z-index: 9998;
+      transition: all 0.25s ease;
+    }
+
+    /* Rainbow text utility */
+    .rainbow {
+      background: linear-gradient(90deg, var(--r), var(--o), var(--y), var(--g), var(--b), var(--v));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 3rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--fg); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(168,85,247,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 70%, rgba(30,144,255,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Spectrum bar */
+    .spectrum {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--r), var(--o), var(--y), var(--g), var(--b), var(--v));
+    }
+
+    .hero-content { max-width: 900px; }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 2rem; height: 1px;
+      background: var(--muted);
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    h1 em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--r), var(--o), var(--y), var(--g), var(--b), var(--v));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--fg);
+      color: var(--bg);
+      border: 1px solid var(--fg);
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--fg);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--fg); border-color: var(--fg); }
+
+    /* Stats strip */
+    .stats-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex; gap: 4rem; overflow-x: auto;
+    }
+    .stat { flex-shrink: 0; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* Section */
+    section { padding: 6rem 3rem; }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .section-num {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.02em;
+    }
+
+    /* Portfolio grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .portfolio-card {
+      background: var(--card);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: none;
+    }
+    .portfolio-card:hover { background: #161616; }
+
+    .card-accent {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .card-accent.r { background: var(--r); }
+    .card-accent.o { background: var(--o); }
+    .card-accent.y { background: var(--y); }
+    .card-accent.g { background: var(--g); }
+    .card-accent.b { background: var(--b); }
+    .card-accent.v { background: var(--v); }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .card-type {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .card-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: var(--fg);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .portfolio-card:hover .card-link { opacity: 1; }
+
+    /* Workspace section */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .workspace-item {
+      background: var(--card);
+      padding: 2rem 2.5rem;
+    }
+    .workspace-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .workspace-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* About */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+    .about-text p strong { color: var(--fg); font-weight: 400; }
+
+    .skills-list { list-style: none; }
+    .skill-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .skill-item:first-child { border-top: 1px solid var(--border); }
+    .skill-name { color: var(--fg); }
+    .skill-bar {
+      width: 80px; height: 2px;
+      background: var(--border);
+      position: relative;
+    }
+    .skill-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      border-radius: 1px;
+    }
+
+    /* Contact */
+    .contact-section {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 6rem 3rem;
+    }
+    .contact-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .contact-section h2 em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--r), var(--o), var(--y), var(--g), var(--b), var(--v));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .contact-sub {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+    .delay-5 { animation-delay: 0.7s; }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .spin { animation: spin 8s linear infinite; }
+
+    /* Scrolling rainbow divider */
+    .rainbow-divider {
+      height: 2px;
+      background: linear-gradient(90deg, var(--r), var(--o), var(--y), var(--g), var(--b), var(--v), var(--r));
+      background-size: 200%;
+      animation: rainbowScroll 3s linear infinite;
+    }
+    @keyframes rainbowScroll {
+      to { background-position: 200% center; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+      .stats-strip { padding: 1.5rem; gap: 2.5rem; }
+      .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .workspace-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo"><span class="rainbow">Color(Yan)</span> He</div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#workspace">Setup</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="spectrum"></div>
+    <div class="hero-content">
+      <p class="hero-tag fade-up delay-1">Financial Economics · Johns Hopkins University</p>
+      <h1 class="fade-up delay-2">
+        Finance.<br/><em>Colorfully.</em>
+      </h1>
+      <p class="hero-desc fade-up delay-3">
+        I'm Yan — a financial economist who believes data should be beautiful, models should be rigorous, and work should speak for itself. I build dashboards, financial models, and research that actually get used.
+      </p>
+      <div class="hero-ctas fade-up delay-4">
+        <a href="#work" class="btn btn-primary">View My Work ↓</a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="rainbow-divider"></div>
+
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="stat">
+      <div class="stat-num rainbow">4.0</div>
+      <div class="stat-label">GPA</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color:var(--o)">2+</div>
+      <div class="stat-label">Internships</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color:var(--g)">3+</div>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" style="color:var(--b)">DC</div>
+      <div class="stat-label">Based in</div>
+    </div>
+  </div>
+
+  <!-- Portfolio -->
+  <section id="work">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Selected Work</h2>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <div class="card-accent r"></div>
+        <span class="card-icon">📊</span>
+        <div class="card-type">Data Visualization</div>
+        <div class="card-title">Power BI Dashboard</div>
+        <div class="card-desc">
+          Interactive business intelligence dashboard built to surface operational insights. Designed for clarity — every chart earns its place.
+        </div>
+        <div class="card-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">DAX</span>
+          <span class="tag">Data Modeling</span>
+        </div>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="card-accent g"></div>
+        <span class="card-icon">📈</span>
+        <div class="card-type">Financial Modeling</div>
+        <div class="card-title">Financial Model</div>
+        <div class="card-desc">
+          A comprehensive financial model built from first principles. Forecasting, valuation, and scenario analysis — all in one rigorous framework.
+        </div>
+        <div class="card-tags">
+          <span class="tag">Excel</span>
+          <span class="tag">DCF</span>
+          <span class="tag">Scenario Analysis</span>
+        </div>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="card-accent b"></div>
+        <span class="card-icon">🏦</span>
+        <div class="card-type">Fixed Income Research</div>
+        <div class="card-title">Fixed Income Research</div>
+        <div class="card-desc">
+          Research produced during internship at a Chinese brokerage firm. Analysis of bond markets, yield dynamics, and macro implications.
+        </div>
+        <div class="card-tags">
+          <span class="tag">Bloomberg</span>
+          <span class="tag">R</span>
+          <span class="tag">Fixed Income</span>
+        </div>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="card-accent v"></div>
+        <span class="card-icon">🧮</span>
+        <div class="card-type">Quantitative Finance</div>
+        <div class="card-title">Credit Scorecard Model</div>
+        <div class="card-desc">
+          Logistic regression-based credit scorecard using Weight of Evidence and Information Value methodology. Academic project, production-grade rigor.
+        </div>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Logistic Regression</span>
+          <span class="tag">WOE/IV</span>
+        </div>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="card-accent o"></div>
+        <span class="card-icon">🔁</span>
+        <div class="card-type">Data Engineering</div>
+        <div class="card-title">Data Pipeline (State Street)</div>
+        <div class="card-desc">
+          Operational data pipeline work during internship at State Street. Automating data flows and improving reliability at scale.
+        </div>
+        <div class="card-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Python</span>
+          <span class="tag">Operations</span>
+        </div>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="card-accent y"></div>
+        <span class="card-icon">📉</span>
+        <div class="card-type">Econometrics</div>
+        <div class="card-title">Panel Data Analysis</div>
+        <div class="card-desc">
+          Fixed effects and panel data econometrics. Rigorous methodology applied to real economic questions — the kind of work that holds up to scrutiny.
+        </div>
+        <div class="card-tags">
+          <span class="tag">R</span>
+          <span class="tag">Fixed Effects</span>
+          <span class="tag">Econometrics</span>
+        </div>
+        <a href="#" class="card-link">View Project →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="rainbow-divider"></div>
+
+  <!-- Workspace -->
+  <section id="workspace">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>My Setup</h2>
+    </div>
+    <div class="workspace-grid">
+      <div class="workspace-item">
+        <div class="workspace-label">Languages</div>
+        <div class="workspace-val">Python · R · SQL</div>
+      </div>
+      <div class="workspace-item">
+        <div class="workspace-label">Finance Tools</div>
+        <div class="workspace-val">Bloomberg Terminal · Excel</div>
+      </div>
+      <div class="workspace-item">
+        <div class="workspace-label">Visualization</div>
+        <div class="workspace-val">Power BI · ggplot2 · matplotlib</div>
+      </div>
+      <div class="workspace-item">
+        <div class="workspace-label">Research</div>
+        <div class="workspace-val">Fixed Income · Credit · Macro</div>
+      </div>
+      <div class="workspace-item">
+        <div class="workspace-label">Education</div>
+        <div class="workspace-val">M.S. Financial Economics · Johns Hopkins</div>
+      </div>
+      <div class="workspace-item">
+        <div class="workspace-label">Currently Reading</div>
+        <div class="workspace-val">Volatility surfaces · VIX dynamics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>About Me</h2>
+    </div>
+    <div class="about-layout">
+      <div class="about-text">
+        <p>
+          I'm <strong>Yan (Color) He</strong>, a graduate student in Financial Economics at Johns Hopkins University with a 4.0 GPA and a genuine obsession with making finance less grey.
+        </p>
+        <p>
+          My background spans <strong>fixed income research</strong>, <strong>data pipeline engineering</strong>, and <strong>quantitative modeling</strong> — from the trading desks of Chinese brokerage firms to the operational infrastructure of global asset managers.
+        </p>
+        <p>
+          I believe the best financial work is rigorous <em>and</em> communicable. A model no one understands is just noise. I build things that get used.
+        </p>
+        <p>
+          When I'm not in spreadsheets, I'm listening to Jay Chou, making perler bead art, and probably thinking about my next options trade.
+        </p>
+      </div>
+      <div>
+        <ul class="skills-list">
+          <li class="skill-item">
+            <span class="skill-name">Financial Modeling</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%;background:var(--r)"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Python / Data Analysis</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%;background:var(--o)"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Power BI</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%;background:var(--y)"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">R / Econometrics</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:82%;background:var(--g)"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Bloomberg Terminal</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%;background:var(--b)"></div></div>
+          </li>
+          <li class="skill-item">
+            <span class="skill-name">Fixed Income Research</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:78%;background:var(--v)"></div></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rainbow-divider"></div>
+
+  <!-- Contact -->
+  <div class="contact-section" id="contact">
+    <h2>Let's <em>connect.</em></h2>
+    <p class="contact-sub">Open to investment banking, research, and quant roles.</p>
+    <div class="contact-links">
+      <a href="mailto:yan@example.com" class="btn btn-primary">Email Me</a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/yourprofile" target="_blank" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 Color(Yan) He</span>
+    <span style="background:linear-gradient(90deg,var(--r),var(--o),var(--y),var(--g),var(--b),var(--v));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+      Made with color.
+    </span>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx - 6 + 'px';
+      cursor.style.top  = my - 6 + 'px';
+    });
+
+    function animRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx - 18 + 'px';
+      ring.style.top  = ry - 18 + 'px';
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+      el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+    });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.portfolio-card, .workspace-item, .skill-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>
