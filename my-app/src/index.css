@@ -1,0 +1,86 @@
+/* ===== Color(Yan) He — Global Styles ===== */
+
+:root {
+  /* Rainbow palette — five-elements balanced: red/orange muted, blue/green boosted */
+  --r: #d46a6a;
+  --o: #d49a50;
+  --y: #f5c800;
+  --g: #00d980;
+  --b: #2898ff;
+  --v: #a855f7;
+
+  --bg: #0a0a0a;
+  --fg: #f0ede8;
+  --muted: #888;
+  --card: #111;
+  --border: #222;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Rainbow Pixel Art Cursor ===== */
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24'><path d='M2 2 L2 20 L6 16 L10 22 L13 20 L9 14 L14 14 Z' fill='url(%23rainbow)' stroke='%23333' stroke-width='0.5'/><defs><linearGradient id='rainbow' x1='0' y1='0' x2='0' y2='1'><stop offset='0%25' stop-color='%23d46a6a'/><stop offset='20%25' stop-color='%23d49a50'/><stop offset='40%25' stop-color='%23f5c800'/><stop offset='60%25' stop-color='%2300d980'/><stop offset='80%25' stop-color='%232898ff'/><stop offset='100%25' stop-color='%23a855f7'/></linearGradient></defs></svg>") 2 2, auto;
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"],
+.portfolio-card, .btn, .nav-links a, .hamburger, select, label {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='28' viewBox='0 0 24 28'><path d='M4 2 L4 22 L8 18 L12 25 L15 23 L11 16 L16 16 Z' fill='url(%23rp)' stroke='%23fff' stroke-width='0.7'/><circle cx='10' cy='10' r='8' fill='none' stroke='url(%23rp)' stroke-width='0.4' opacity='0.5'/><defs><linearGradient id='rp' x1='0' y1='0' x2='0' y2='1'><stop offset='0%25' stop-color='%23d46a6a'/><stop offset='20%25' stop-color='%23d49a50'/><stop offset='40%25' stop-color='%23f5c800'/><stop offset='60%25' stop-color='%2300d980'/><stop offset='80%25' stop-color='%232898ff'/><stop offset='100%25' stop-color='%23a855f7'/></linearGradient></defs></svg>") 4 2, pointer;
+}
+
+/* ===== Base Typography ===== */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; padding: 0; }
+img { max-width: 100%; display: block; }
+
+/* ===== Rainbow Text Utility ===== */
+.rainbow {
+  background: linear-gradient(90deg, var(--r), var(--o), var(--y), var(--g), var(--b), var(--v));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--v); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--b); }
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(40, 152, 255, 0.3);
+  color: #fff;
+}
