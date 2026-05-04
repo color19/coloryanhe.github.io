@@ -1,23 +1,30 @@
+const stats = [
+  { num: '4.0', decimals: 1, suffix: '', label: 'GPA', color: 'var(--r)' },
+  { num: '2', decimals: 0, suffix: '+', label: 'Internships', color: 'var(--o)' },
+  { num: '3', decimals: 0, suffix: '+', label: 'Projects', color: 'var(--g)' },
+  { num: 'DC', isText: true, label: 'Based in', color: 'var(--b)' },
+]
+
 function Stats() {
   return (
-    <div className="stats-strip">
-      <div className="stat">
-        <div className="stat-num rainbow">4.0</div>
-        <div className="stat-label">GPA</div>
+    <section className="stats" data-section="stats" aria-label="At a glance">
+      <div className="stats-row">
+        {stats.map((s) => (
+          <div className="stat" key={s.label}>
+            <div
+              className="stat-num"
+              style={{ color: s.color }}
+              data-countup={s.isText ? undefined : s.num}
+              data-decimals={s.decimals}
+              data-suffix={s.suffix}
+            >
+              {s.isText ? s.num : `0${s.suffix || ''}`}
+            </div>
+            <div className="stat-label">{s.label}</div>
+          </div>
+        ))}
       </div>
-      <div className="stat">
-        <div className="stat-num" style={{ color: 'var(--o)' }}>2+</div>
-        <div className="stat-label">Internships</div>
-      </div>
-      <div className="stat">
-        <div className="stat-num" style={{ color: 'var(--g)' }}>3+</div>
-        <div className="stat-label">Projects</div>
-      </div>
-      <div className="stat">
-        <div className="stat-num" style={{ color: 'var(--b)' }}>DC</div>
-        <div className="stat-label">Based in</div>
-      </div>
-    </div>
+    </section>
   )
 }
 

@@ -9,13 +9,15 @@ const skills = [
 
 function About() {
   return (
-    <section id="about">
-      <div className="section-header scroll-reveal">
-        <span className="section-num">03</span>
-        <h2>About Me</h2>
-      </div>
+    <section id="about" className="about" data-section="about">
+      <header className="flow-header">
+        <span className="flow-eyebrow">About Me</span>
+        <h2 className="flow-title">
+          Rigorous, and <em>communicable.</em>
+        </h2>
+      </header>
       <div className="about-layout">
-        <div className="about-text scroll-reveal">
+        <div className="about-text">
           <p>
             I&rsquo;m <strong>Yan (Color) He</strong>, a graduate student in
             Financial Economics at Johns Hopkins University with a 4.0 GPA and a
@@ -37,21 +39,19 @@ function About() {
             making perler bead art, and probably thinking about my next options trade.
           </p>
         </div>
-        <div className="scroll-reveal">
-          <ul className="skills-list">
-            {skills.map((skill) => (
-              <li className="skill-item" key={skill.name}>
-                <span className="skill-name">{skill.name}</span>
-                <div className="skill-bar">
-                  <div
-                    className="skill-fill"
-                    style={{ width: skill.width, background: skill.color }}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="skills-list">
+          {skills.map((skill) => (
+            <li className="skill-item" key={skill.name} style={{ '--skill-color': skill.color }}>
+              <span className="skill-name">{skill.name}</span>
+              <div className="skill-bar">
+                <div
+                  className="skill-fill"
+                  style={{ width: skill.width, background: skill.color }}
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

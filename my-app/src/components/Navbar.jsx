@@ -17,13 +17,19 @@ function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <div className="nav-logo">
-          <span className="rainbow">Color(Yan)</span> He
-        </div>
+        <a href="#top" className="nav-logo">
+          <span className="rainbow">Color(Yan)</span>
+          <span className="nav-logo-tail"> He</span>
+        </a>
         <ul className="nav-links">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
+              <a href={link.href}>
+                <span className="nav-link-num" aria-hidden="true">
+                  ·
+                </span>
+                {link.label}
+              </a>
             </li>
           ))}
         </ul>
@@ -31,6 +37,7 @@ function Navbar() {
           className={`hamburger ${menuOpen ? 'active' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <span />
           <span />
