@@ -1,27 +1,34 @@
 const items = [
-  { label: 'Languages', value: 'Python \u00B7 R \u00B7 SQL' },
-  { label: 'Finance Tools', value: 'Bloomberg Terminal \u00B7 Excel' },
-  { label: 'Visualization', value: 'Power BI \u00B7 ggplot2 \u00B7 matplotlib' },
-  { label: 'Research', value: 'Fixed Income \u00B7 Credit \u00B7 Macro' },
-  { label: 'Education', value: 'M.S. Financial Economics \u00B7 Johns Hopkins' },
-  { label: 'Currently Reading', value: 'Volatility surfaces \u00B7 VIX dynamics' },
+  { label: 'Languages', value: 'Python · R · SQL', color: 'var(--r)' },
+  { label: 'Finance Tools', value: 'Bloomberg Terminal · Excel', color: 'var(--o)' },
+  { label: 'Visualization', value: 'Power BI · ggplot2 · matplotlib', color: 'var(--y)' },
+  { label: 'Research', value: 'Fixed Income · Credit · Macro', color: 'var(--g)' },
+  { label: 'Education', value: 'M.S. Financial Economics · Johns Hopkins', color: 'var(--b)' },
+  { label: 'Currently Reading', value: 'Volatility surfaces · VIX dynamics', color: 'var(--v)' },
 ]
 
 function Workspace() {
   return (
-    <section id="workspace">
-      <div className="section-header scroll-reveal">
-        <span className="section-num">02</span>
-        <h2>My Setup</h2>
-      </div>
-      <div className="workspace-grid">
+    <section id="workspace" className="workspace" data-section="workspace">
+      <header className="flow-header">
+        <span className="flow-eyebrow">My Setup</span>
+        <h2 className="flow-title">
+          Tools that <em>earn their keep.</em>
+        </h2>
+      </header>
+      <ul className="workspace-list">
         {items.map((item) => (
-          <div className="workspace-item scroll-reveal" key={item.label}>
-            <div className="workspace-label">{item.label}</div>
-            <div className="workspace-val">{item.value}</div>
-          </div>
+          <li
+            className="workspace-row"
+            key={item.label}
+            style={{ '--row-color': item.color }}
+          >
+            <span className="workspace-row-label">{item.label}</span>
+            <span className="workspace-row-rule" aria-hidden="true" />
+            <span className="workspace-row-value">{item.value}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }
