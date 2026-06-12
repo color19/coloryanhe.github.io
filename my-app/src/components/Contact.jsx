@@ -15,6 +15,14 @@ function Contact() {
             Email Me
           </a>
           <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost magnetic"
+          >
+            Resume
+          </a>
+          <a
             href="https://www.linkedin.com/in/colorho/"
             target="_blank"
             rel="noopener noreferrer"

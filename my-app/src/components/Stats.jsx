@@ -1,7 +1,7 @@
 const stats = [
   { num: '4.0', decimals: 1, suffix: '', label: 'GPA', color: 'var(--r)' },
-  { num: '2', decimals: 0, suffix: '+', label: 'Internships', color: 'var(--o)' },
-  { num: '3', decimals: 0, suffix: '+', label: 'Projects', color: 'var(--g)' },
+  { num: '4', decimals: 0, suffix: '', label: 'Internships', color: 'var(--o)' },
+  { num: '6', decimals: 0, suffix: '', label: 'Projects', color: 'var(--g)' },
   { num: 'DC', isText: true, label: 'Based in', color: 'var(--b)' },
 ]
 

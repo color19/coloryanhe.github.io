@@ -71,6 +71,11 @@ const petalStyles = `
 `
 
 function CherryBlossoms() {
+  const reduceMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduceMotion) return null
+
   return (
     <>
       <style>{petalStyles}</style>

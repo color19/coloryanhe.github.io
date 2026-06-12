@@ -1,10 +1,30 @@
-const skills = [
-  { name: 'Financial Modeling', width: '90%', color: 'var(--r)' },
-  { name: 'Python / Data Analysis', width: '85%', color: 'var(--o)' },
-  { name: 'Power BI', width: '80%', color: 'var(--y)' },
-  { name: 'R / Econometrics', width: '82%', color: 'var(--g)' },
-  { name: 'Bloomberg Terminal', width: '75%', color: 'var(--b)' },
-  { name: 'Fixed Income Research', width: '78%', color: 'var(--v)' },
+const skillTiers = [
+  {
+    tier: 'Advanced',
+    color: 'var(--r)',
+    items: ['SQL', 'Power BI', 'Stata', 'Bloomberg Terminal', 'Excel / Power Query', 'Git'],
+  },
+  {
+    tier: 'Working Proficiency',
+    color: 'var(--y)',
+    items: [
+      'Python (Pandas, Statsmodels)',
+      'R',
+      'Panel Econometrics (FE, IV, DID)',
+      'Time Series Analysis',
+      'Credit Risk Modeling (WOE/IV)',
+    ],
+  },
+  {
+    tier: 'Domain',
+    color: 'var(--b)',
+    items: [
+      'Fixed Income Valuation',
+      'Credit Analysis',
+      'ESG / Sustainable Finance',
+      'Macro & Event-Study Research',
+    ],
+  },
 ]
 
 function About() {
@@ -40,15 +60,14 @@ function About() {
           </p>
         </div>
         <ul className="skills-list">
-          {skills.map((skill) => (
-            <li className="skill-item" key={skill.name} style={{ '--skill-color': skill.color }}>
-              <span className="skill-name">{skill.name}</span>
-              <div className="skill-bar">
-                <div
-                  className="skill-fill"
-                  style={{ width: skill.width, background: skill.color }}
-                />
-              </div>
+          {skillTiers.map((tier) => (
+            <li className="skill-item" key={tier.tier} style={{ '--skill-color': tier.color }}>
+              <span className="skill-tier-label">{tier.tier}</span>
+              <ul className="skill-chips">
+                {tier.items.map((item) => (
+                  <li className="skill-chip" key={item}>{item}</li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>

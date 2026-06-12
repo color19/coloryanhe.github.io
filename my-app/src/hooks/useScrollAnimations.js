@@ -285,18 +285,6 @@ export function useScrollAnimations() {
         })
       })
 
-      gsap.utils.toArray('.skill-fill').forEach((bar) => {
-        const target = bar.style.width
-        gsap.fromTo(
-          bar,
-          { width: '0%' },
-          {
-            width: target, duration: 1.5, ease: EASE,
-            scrollTrigger: { trigger: bar, start: 'top 90%' },
-          },
-        )
-      })
-
       gsap.utils.toArray('.skill-item').forEach((el, i) => {
         gsap.from(el, {
           opacity: 0, x: 30, duration: 0.85, ease: EASE, delay: i * 0.06,

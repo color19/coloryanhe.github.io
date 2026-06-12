@@ -1,3 +1,5 @@
+import ProjectGlyph from './ProjectGlyph'
+
 const projects = [
   {
     accent: 'r',
@@ -69,6 +71,9 @@ function Portfolio() {
             <div className="project-figure">
               <div className="project-numeral" aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
+              </div>
+              <div className="project-glyph-wrap">
+                <ProjectGlyph kind={p.glyph} />
               </div>
             </div>
             <div className="project-body">

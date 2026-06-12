@@ -24,6 +24,15 @@ function Hero() {
           <a href="#contact" className="btn btn-ghost magnetic">
             <span className="btn-label">Get In Touch</span>
           </a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost magnetic"
+          >
+            <span className="btn-label">Resume</span>
+            <span className="btn-arrow" aria-hidden="true">&darr;</span>
+          </a>
         </div>
       </div>
 
