@@ -179,6 +179,33 @@ export function useScrollAnimations() {
         })
       })
 
+      /* Pegboards fade in as scaffolding, then beads pop on one at a time */
+      gsap.utils.toArray('.stat').forEach((el, i) => {
+        const pegs = el.querySelectorAll('.peg')
+        const beads = el.querySelectorAll('.bead')
+        if (pegs.length) {
+          gsap.from(pegs, {
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.01,
+            ease: 'power2.out',
+            delay: 0.1 + i * 0.08,
+            scrollTrigger: { trigger: '.stats-row', start: 'top 88%' },
+          })
+        }
+        if (beads.length) {
+          gsap.from(beads, {
+            scale: 0,
+            opacity: 0,
+            duration: 0.45,
+            stagger: 0.07,
+            ease: 'back.out(2.5)',
+            delay: 0.35 + i * 0.08,
+            scrollTrigger: { trigger: '.stats-row', start: 'top 88%' },
+          })
+        }
+      })
+
       gsap.utils.toArray('[data-countup]').forEach((el) => {
         const target = parseFloat(el.dataset.countup)
         if (Number.isNaN(target)) return

@@ -521,6 +521,25 @@ section[data-section] {
   gap: 0.4rem;
 }
 
+/* Perler-bead mini charts above each number */
+.stat-bead {
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 0.6rem;
+}
+
+.bead-chart {
+  display: block;
+  width: auto;
+  max-height: 100%;
+}
+
+.bead {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 .stat-num {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
