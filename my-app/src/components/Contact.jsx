@@ -31,7 +31,7 @@ function Contact() {
             LinkedIn
           </a>
           <a
-            href="https://github.com/color19/coloryanhe.github.io"
+            href="https://github.com/color19"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-ghost magnetic"
