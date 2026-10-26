@@ -208,19 +208,16 @@
 }
 
 /* The first shot is a static base so the window is never empty;
-   the others wipe over it in turn */
+   the second wipes over it for half of each cycle */
 .hero-window img:not(:first-child) {
   clip-path: inset(0 0 100% 0);
-  animation: window-cycle 12s infinite;
+  animation: window-cycle 10s 2s infinite;
 }
-
-.hero-window img:nth-child(2) { animation-delay: 4s; }
-.hero-window img:nth-child(3) { animation-delay: 8s; }
 
 @keyframes window-cycle {
   0% { clip-path: inset(0 0 100% 0); }
-  6%, 33% { clip-path: inset(0 0 0 0); }
-  40%, 100% { clip-path: inset(100% 0 0 0); }
+  8%, 50% { clip-path: inset(0 0 0 0); }
+  58%, 100% { clip-path: inset(100% 0 0 0); }
 }
 
 .hero-window-note {
@@ -304,7 +301,6 @@
 
 .project-card.tone-cream { background-color: var(--paper); }
 .project-card.tone-sage { background-color: var(--sage); --card-ink: var(--sage-ink); }
-.project-card.tone-mist { background-color: var(--mist); }
 
 .project-card h3 {
   font-size: clamp(40px, 5vw, 54px);

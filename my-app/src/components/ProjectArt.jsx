@@ -41,22 +41,7 @@ function Glide() {
   )
 }
 
-/* Away — two pins, one arc: price on one end, experience on the other */
-function Arc() {
-  return (
-    <svg viewBox={VIEW} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <line x1="14" y1="138" x2="206" y2="138" />
-      <path d="M46 128 Q110 6 174 128" strokeDasharray="4 6" />
-      <circle cx="46" cy="132" r="6" fill="currentColor" />
-      <circle cx="174" cy="132" r="6" fill="currentColor" />
-      <circle cx="110" cy="68" r="5" fill={BRICK} stroke={BRICK} />
-      <text x="46" y="162" textAnchor="middle" fill="currentColor" stroke="none" fontFamily="var(--sans)" fontSize="15" fontWeight="500">$</text>
-      <path d="M174 148 l3.2 6.5 7.1 1 -5.1 5 1.2 7.1 -6.4 -3.4 -6.4 3.4 1.2 -7.1 -5.1 -5 7.1 -1z" strokeWidth="1.3" />
-    </svg>
-  )
-}
-
-const KIND = { allocation: Allocation, glide: Glide, arc: Arc }
+const KIND = { allocation: Allocation, glide: Glide }
 
 function ProjectArt({ kind }) {
   const Art = KIND[kind]

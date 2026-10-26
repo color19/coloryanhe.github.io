@@ -23,17 +23,6 @@ const projects = [
     art: 'glide',
     note: 'deadline → daily pace',
   },
-  {
-    tone: 'mist',
-    kicker: 'Travel, valued',
-    title: 'Away',
-    desc: 'Picks my next trip out of DC the way I’d value an asset: real fare snapshots times a city experience score times a seasonal factor. Cheap isn’t the point. Worth it is.',
-    live: 'https://color19.github.io/away-city-edit/',
-    source: 'https://github.com/color19/away-city-edit',
-    status: 'Live · 28 European cities so far',
-    art: 'arc',
-    note: 'price × experience',
-  },
 ]
 
 /* Fixed star positions so the sky doesn't reshuffle on every render */
@@ -61,7 +50,7 @@ function Projects() {
             Clean numbers.
           </h2>
           <p>
-            I build tools when the ones I need don&rsquo;t exist. Three
+            I build tools when the ones I need don&rsquo;t exist. Two
             projects, one thread: each turns a decision I kept overthinking
             into a number I can act on.
           </p>
@@ -93,7 +82,7 @@ function Projects() {
         </div>
 
         <p className="projects-foot">
-          All three run in the browser, no account, no server. Your data stays on your machine.
+          Both are single HTML files that run in the browser, with no account and no server. Your data stays on your machine.
         </p>
       </div>
     </section>

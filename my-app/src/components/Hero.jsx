@@ -1,7 +1,6 @@
 const shots = [
   { src: '/shots/studyroom.png', alt: 'Studyroom: CFA subjects shown as portfolio holdings against target weights' },
   { src: '/shots/runway.jpg', alt: 'Runway: a calendar that works back from deadlines to a daily pace' },
-  { src: '/shots/away.jpg', alt: 'Away: destinations ranked by flight price times city experience' },
 ]
 
 function Hero() {
@@ -32,7 +31,7 @@ function Hero() {
             ))}
           </div>
           <a href="#projects" className="hand hero-window-note">
-            three things I built for myself &darr;
+            two tools I built for myself &darr;
           </a>
         </div>
       </div>
