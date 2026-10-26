@@ -55,7 +55,7 @@ function Shelf({ onTour }) {
       arrow: 'curl',
       title: 'The app',
       badge: 'Free to open',
-      desc: 'Runs in your browser with twenty original sample questions. Import your own question bank when you’re ready.',
+      desc: 'Runs in your browser, in English or Chinese, with twenty original sample questions. Import your own question bank when you’re ready.',
       cta: { label: 'Open Studyroom', href: LIVE },
     },
     {

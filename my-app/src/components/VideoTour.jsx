@@ -42,7 +42,7 @@ function VideoTour({ open, onClose }) {
           preload="none"
         />
         <p className="tour-note">
-          Recorded on my personal copy. The open-source version currently ships in Chinese,
+          Recorded on my personal copy. The open-source version runs in English and Chinese,
           with 20 original sample questions.
         </p>
       </div>
