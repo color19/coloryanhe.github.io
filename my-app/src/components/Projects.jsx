@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import ProjectArt from './ProjectArt'
+import VideoTour from './VideoTour'
 
 const projects = [
   {
@@ -8,7 +10,8 @@ const projects = [
     desc: 'A study app that treats the CFA curriculum like a portfolio. Syllabus weights are the target allocation, practiced questions are the holdings, and every session is a rebalancing trade toward whatever I’m underweight in.',
     live: 'https://color19.github.io/studyroom/',
     source: 'https://github.com/color19/studyroom',
-    status: 'Open source · in daily use',
+    status: 'Open source · Chinese UI, for Chinese-speaking candidates',
+    tour: true,
     art: 'allocation',
     note: 'target weight → rebalance',
   },
@@ -34,6 +37,8 @@ const stars = Array.from({ length: 70 }, (_, i) => {
 })
 
 function Projects() {
+  const [tourOpen, setTourOpen] = useState(false)
+
   return (
     <section id="projects" className="projects">
       <svg className="stars" aria-hidden="true">
@@ -64,7 +69,17 @@ function Projects() {
                 <h3>{p.title}</h3>
                 <p className="desc">{p.desc}</p>
                 <div className="project-actions">
-                  <a className="btn btn-solid" href={p.live} target="_blank" rel="noopener noreferrer">
+                  {p.tour && (
+                    <button type="button" className="btn btn-solid" onClick={() => setTourOpen(true)}>
+                      <span aria-hidden="true">▶</span> Watch the 75s tour
+                    </button>
+                  )}
+                  <a
+                    className={p.tour ? 'btn btn-text' : 'btn btn-solid'}
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Try it live <span aria-hidden="true">↗</span>
                   </a>
                   <a className="btn btn-text" href={p.source} target="_blank" rel="noopener noreferrer">
@@ -85,6 +100,8 @@ function Projects() {
           Both are single HTML files that run in the browser, with no account and no server. Your data stays on your machine.
         </p>
       </div>
+
+      <VideoTour open={tourOpen} onClose={() => setTourOpen(false)} />
     </section>
   )
 }

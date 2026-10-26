@@ -60,6 +60,12 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+button.btn {
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .btn:hover { transform: translateY(-1px); }
 
 .btn-solid {
@@ -352,6 +358,97 @@
   margin-top: 40px;
   font-size: 15px;
   color: rgba(250, 248, 242, 0.6);
+}
+
+/* ===== Video tour dialog ===== */
+.tour {
+  width: min(960px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: var(--navy-deep);
+  color: var(--paper);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+}
+
+.tour::backdrop {
+  background: rgba(7, 21, 40, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.tour-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(16px, 3vw, 28px);
+}
+
+.tour-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tour .eyebrow { color: rgba(250, 248, 242, 0.5); }
+
+.tour-close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(250, 248, 242, 0.1);
+  color: var(--paper);
+  font: 400 22px/1 var(--sans);
+  cursor: pointer;
+}
+
+.tour-close:hover { background: rgba(250, 248, 242, 0.2); }
+
+.tour video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: #000;
+}
+
+.tour-caption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: baseline;
+  min-height: 3.4em;
+}
+
+.tour-step {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--brick);
+  font-variant-numeric: tabular-nums;
+}
+
+.tour-caption b {
+  display: block;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.tour-caption p {
+  margin-top: 4px;
+  font-size: 15.5px;
+  color: rgba(250, 248, 242, 0.74);
+}
+
+.tour-note {
+  padding-top: 14px;
+  border-top: 1px solid rgba(250, 248, 242, 0.12);
+  font-size: 13px;
+  color: rgba(250, 248, 242, 0.5);
 }
 
 /* ===== Work: finance ===== */
