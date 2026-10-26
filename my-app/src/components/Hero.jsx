@@ -1,6 +1,6 @@
 const shots = [
   { src: '/shots/studyroom.png', alt: 'Studyroom: CFA subjects shown as portfolio holdings against target weights' },
-  { src: '/shots/runway.jpg', alt: 'Runway: a calendar that works back from deadlines to a daily pace' },
+  { src: '/shots/runway.jpg', alt: 'Runway, minimal edition: still 2h15m to reach today’s pace across three projects' },
 ]
 
 function Hero() {

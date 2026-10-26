@@ -53,7 +53,7 @@ export function SectionMarker() {
 
 const LINKS = [
   [['Home', '/#top'], ['Projects', '/#projects'], ['Work', '/#work']],
-  [['Studyroom', '/projects/studyroom/'], ['Runway', 'https://color19.github.io/runway/'], ['Research', '/#work']],
+  [['Studyroom', '/projects/studyroom/'], ['Runway', 'https://color19.github.io/runway/en/'], ['Research', '/#work']],
   [['yanhe2026@gmail.com', 'mailto:yanhe2026@gmail.com'], ['LinkedIn', 'https://www.linkedin.com/in/colorho/'], ['GitHub', 'https://github.com/color19']],
 ]
 
