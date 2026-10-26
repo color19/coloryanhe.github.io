@@ -755,7 +755,39 @@ button.btn-text { background: none; }
 }
 
 .caps-col .eyebrow { margin-bottom: 14px; }
-.caps-col li { font-size: 15px; line-height: 1.5; padding: 3px 0; }
+
+.caps-col button {
+  all: unset;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 3px 0;
+  color: var(--ink);
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.caps-col sup {
+  margin-left: 3px;
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.caps.has-cur .caps-col button { opacity: 0.35; }
+.caps.has-cur .caps-col button.is-cur { opacity: 1; color: var(--brick); }
+.caps.has-cur .caps-col button.is-cur sup { color: var(--brick); }
+
+.caps-used {
+  grid-column: 1 / -1;
+  min-height: 1.6em;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.caps-used b { font-weight: 500; color: var(--brick); }
+.caps-used a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.caps-used a:hover { color: var(--brick); text-decoration-color: var(--brick); }
 
 @media (max-width: 800px) {
   .caps { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
