@@ -63,8 +63,8 @@ function Shelf({ onTour }) {
       note: 'no time? watch first',
       arrow: 'down',
       title: 'The tour',
-      badge: '75 seconds',
-      desc: 'A captioned walk through my own copy, recorded in the middle of my Level I prep.',
+      badge: '74 seconds',
+      desc: 'A quick walk through my own copy, recorded in the middle of my Level I prep.',
       cta: { label: 'Watch the tour', onClick: onTour },
     },
     {
