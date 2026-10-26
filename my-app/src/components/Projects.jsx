@@ -77,7 +77,7 @@ function Projects() {
                   )}
                   {p.tour && (
                     <button type="button" className="btn btn-text" onClick={() => setTourOpen(true)}>
-                      Watch the 75s tour
+                      Watch the 74s tour
                     </button>
                   )}
                   <a

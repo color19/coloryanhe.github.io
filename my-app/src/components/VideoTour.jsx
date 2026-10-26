@@ -29,7 +29,7 @@ function VideoTour({ open, onClose }) {
     >
       <div className="tour-inner">
         <div className="tour-top">
-          <p id="tour-title" className="eyebrow">Studyroom · 75-second tour</p>
+          <p id="tour-title" className="eyebrow">Studyroom · 74-second tour</p>
           <button type="button" className="tour-close" onClick={onClose} aria-label="Close tour">×</button>
         </div>
         <video

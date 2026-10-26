@@ -1,5 +1,7 @@
+/* `fill` letterboxes a screenshot whose shape differs from the 16:10 window,
+   in its own page colour, so the whole screen stays visible */
 const shots = [
-  { src: '/shots/studyroom.jpg', alt: 'Studyroom: ten CFA topics as portfolio holdings against their exam-weight targets' },
+  { src: '/shots/studyroom.png', alt: 'Studyroom: your portfolio is underweight in Ethics, 13.3 points below target', fill: '#f3f5f8' },
   { src: '/shots/runway.jpg', alt: 'Runway, minimal edition: still 2h15m to reach today’s pace across three projects' },
 ]
 
@@ -27,7 +29,13 @@ function Hero() {
         <div className="hero-window-wrap">
           <div className="hero-window">
             {shots.map((s, i) => (
-              <img key={s.src} src={s.src} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+              <img
+                key={s.src}
+                src={s.src}
+                alt={s.alt}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                style={s.fill ? { objectFit: 'contain', background: s.fill } : undefined}
+              />
             ))}
           </div>
           <a href="#projects" className="hand hero-window-note">
