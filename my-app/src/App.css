@@ -66,6 +66,8 @@ button.btn {
   cursor: pointer;
 }
 
+button.btn-text { background: none; }
+
 .btn:hover { transform: translateY(-1px); }
 
 .btn-solid {

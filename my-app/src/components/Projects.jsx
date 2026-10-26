@@ -11,6 +11,7 @@ const projects = [
     live: 'https://color19.github.io/studyroom/',
     source: 'https://github.com/color19/studyroom',
     status: 'Open source · Chinese UI, for Chinese-speaking candidates',
+    page: '/projects/studyroom/',
     tour: true,
     art: 'allocation',
     note: 'target weight → rebalance',
@@ -69,22 +70,29 @@ function Projects() {
                 <h3>{p.title}</h3>
                 <p className="desc">{p.desc}</p>
                 <div className="project-actions">
+                  {p.page && (
+                    <a className="btn btn-solid" href={p.page}>
+                      Explore {p.title} <span aria-hidden="true">→</span>
+                    </a>
+                  )}
                   {p.tour && (
-                    <button type="button" className="btn btn-solid" onClick={() => setTourOpen(true)}>
-                      <span aria-hidden="true">▶</span> Watch the 75s tour
+                    <button type="button" className="btn btn-text" onClick={() => setTourOpen(true)}>
+                      Watch the 75s tour
                     </button>
                   )}
                   <a
-                    className={p.tour ? 'btn btn-text' : 'btn btn-solid'}
+                    className={p.page ? 'btn btn-text' : 'btn btn-solid'}
                     href={p.live}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Try it live <span aria-hidden="true">↗</span>
                   </a>
-                  <a className="btn btn-text" href={p.source} target="_blank" rel="noopener noreferrer">
-                    Source
-                  </a>
+                  {!p.page && (
+                    <a className="btn btn-text" href={p.source} target="_blank" rel="noopener noreferrer">
+                      Source
+                    </a>
+                  )}
                   <span className="project-status">{p.status}</span>
                 </div>
               </div>
