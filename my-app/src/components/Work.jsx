@@ -1,3 +1,5 @@
+import ResearchRCK from './ResearchRCK'
+
 const stats = [
   { num: '4', text: 'internships, from a brokerage’s bond research desk to State Street’s data pipelines.' },
   { num: '4.0', text: 'GPA, M.S. in Financial Economics at Johns Hopkins.' },
@@ -57,6 +59,8 @@ function Work() {
             </div>
           ))}
         </div>
+
+        <ResearchRCK />
 
         <div className="work-list">
           <div className="work-list-head" data-reveal>
