@@ -28,15 +28,9 @@ const work = [
   },
   {
     title: 'Empirical Asset Pricing',
-    where: 'Coursework · team of two',
-    desc: 'On 30 industry portfolios, 1963–2024, the top five principal components pass the GRS test (F = 0.86) while Fama–French five is rejected (F = 2.79).',
-    tools: 'Python · PCA · GRS · Fama–MacBeth',
-  },
-  {
-    title: 'Fund Network Systemic Risk',
-    where: 'Coursework · team of two',
-    desc: 'Ranked 30 Chinese mutual funds by eigenvector centrality of their common stock holdings, 2016–2022. One consumption fund became the network’s hub in 2017 and stayed there.',
-    tools: 'Python · SAS · networks',
+    where: 'Four problem sets · team of two',
+    desc: 'On 30 industry portfolios, 1963–2024, the top five principal components pass the GRS test (F = 0.86) where Fama–French five is rejected (F = 2.79). Also: mean–variance frontiers, rating-migration Markov chains, and fund-network systemic risk.',
+    tools: 'Python · SAS · WRDS',
   },
   {
     title: 'Panel Data Econometrics',
