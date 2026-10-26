@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PaperArt, { HandArrow } from './PaperArt'
 import { TopBar, SectionMarker, ProjectFooter } from './ProjectChrome'
 import VideoTour from '../VideoTour'
+import Cursor from '../Cursor'
 import '../../App.css'
 import './project.css'
 
@@ -175,6 +176,7 @@ function StudyroomPage() {
   const [tourOpen, setTourOpen] = useState(false)
   return (
     <>
+      <Cursor />
       <TopBar />
       <main id="top">
         <header className="pj-hero paper">

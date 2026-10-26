@@ -78,3 +78,43 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ===== Cursor dot (mouse and trackpad only) ===== */
+@media (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor * { cursor: none !important; }
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--brick);
+  background: var(--brick);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    width 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.cursor-dot.is-on { opacity: 1; }
+
+.cursor-dot.is-hover {
+  width: 48px;
+  height: 48px;
+  background: rgba(206, 70, 49, 0.3);
+}
+
+.cursor-dot.is-down { width: 12px; height: 12px; }
+.cursor-dot.is-hover.is-down { width: 40px; height: 40px; }
+
+.cursor-dot.is-ink { border-color: var(--navy); background: var(--navy); }
+.cursor-dot.is-ink.is-hover { background: rgba(11, 31, 58, 0.25); }

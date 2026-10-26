@@ -59,7 +59,7 @@ const LINKS = [
 
 export function ProjectFooter() {
   return (
-    <footer className="pj-footer" data-marker="">
+    <footer className="pj-footer" data-marker="" data-cursor="ink">
       <div className="wrap">
         <p className="pj-footer-big" aria-hidden="true">
           <span>Keep</span>
