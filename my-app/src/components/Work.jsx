@@ -24,7 +24,7 @@ const work = [
   },
   {
     title: 'Empirical Asset Pricing',
-    where: 'Four problem sets · team of two',
+    where: 'Coursework · four problem sets',
     desc: 'On 30 industry portfolios, 1963–2024, the top five principal components pass the GRS test (F = 0.86) where Fama–French five is rejected (F = 2.79). Also: mean–variance frontiers, rating-migration Markov chains, and fund-network systemic risk.',
     tools: 'Python · SAS · WRDS',
   },

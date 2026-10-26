@@ -210,7 +210,7 @@ function ResearchBDC() {
       </details>
 
       <p className="research-credit">
-        With Shuyang Song and Long Chen. Data: SEC EDGAR (N-54A/N-54C filings), Compustat
+        Data: SEC EDGAR (N-54A/N-54C filings), Compustat
         and CRSP via WRDS. Ratios are winsorised at the 5th and 95th percentiles each
         quarter; quarters with fewer than 10 firms are left blank. Only sector-level
         aggregates are shown here.
