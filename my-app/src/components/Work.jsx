@@ -33,6 +33,12 @@ const work = [
     tools: 'Python · PCA · GRS · Fama–MacBeth',
   },
   {
+    title: 'Fund Network Systemic Risk',
+    where: 'Coursework · team of two',
+    desc: 'Ranked 30 Chinese mutual funds by eigenvector centrality of their common stock holdings, 2016–2022. One consumption fund became the network’s hub in 2017 and stayed there.',
+    tools: 'Python · SAS · networks',
+  },
+  {
     title: 'Panel Data Econometrics',
     where: 'Coursework',
     desc: 'Fixed effects, IV, and difference-in-differences on real economic questions.',
