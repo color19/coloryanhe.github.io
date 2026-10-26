@@ -506,6 +506,13 @@ button.btn {
   letter-spacing: -0.04em;
 }
 
+.research-link {
+  margin-top: 14px;
+  padding-left: 0;
+  color: var(--ink);
+  text-decoration-color: var(--brick);
+}
+
 .research-desc {
   font-size: 16.5px;
   color: var(--ink-soft);
@@ -588,14 +595,14 @@ button.btn {
 }
 
 .mini-panel figcaption {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
   font-size: 13.5px;
+  line-height: 1.35;
 }
 
+.mini-panel figcaption b { display: block; }
+
 .mini-panel figcaption span {
+  display: block;
   font-size: 12px;
   color: var(--ink-faint);
 }
@@ -626,6 +633,19 @@ button.btn {
 .mini-event-label { font: 400 10px var(--sans); fill: var(--ink-faint); }
 .mini-ref { stroke: rgba(10, 10, 10, 0.45); stroke-width: 1; stroke-dasharray: 3 3; }
 .mini-ref-label { font: 500 10.5px var(--sans); fill: var(--ink-soft); }
+
+.mini-cat { font: 400 10.5px var(--sans); fill: var(--ink-soft); }
+.mini-bar { fill: #8e8a80; }
+.mini-bar-hi { fill: #2a6bb8; }
+.mini-seg-a { fill: #2a6bb8; }
+.mini-seg-d { fill: #ce4631; }
+.mini-in { font: 600 11.5px var(--sans); fill: #fff; pointer-events: none; }
+
+.mini-legend .k-bar-hi,
+.mini-legend .k-seg-a { width: 10px; height: 10px; border-radius: 2px; background: #2a6bb8; }
+.mini-legend .k-seg-d { width: 10px; height: 10px; border-radius: 2px; background: #ce4631; }
+
+.mini-table table + table { margin-top: 14px; }
 
 .mini-legend .k-band { height: 8px; background: rgba(42, 107, 184, 0.18); }
 .mini-legend .k-rec { height: 8px; background: rgba(10, 10, 10, 0.08); }

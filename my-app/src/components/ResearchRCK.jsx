@@ -135,8 +135,16 @@ function ResearchRCK() {
     <article className="research" data-reveal>
       <div className="research-head">
         <div>
-          <p className="eyebrow">Research · team project · macroeconomic modeling, May 2026</p>
+          <p className="eyebrow">Published · lead article, JRAFE inaugural issue · 2026</p>
           <h3>Public goods don&rsquo;t bend the growth path.</h3>
+          <a
+            className="btn btn-text research-link"
+            href="https://jhu-econ.github.io/jrafe/articles/2026/spring/rck-govt/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read the paper <span aria-hidden="true">↗</span>
+          </a>
         </div>
         <p className="research-desc">
           In a Ramsey&ndash;Cass&ndash;Koopmans growth model, we let households value public
@@ -199,8 +207,9 @@ function ResearchRCK() {
       </details>
 
       <p className="research-credit">
-        With Mike Santos, Muhong Zhang and Jude Ikemefuna Iziga. Each φ is solved live in
-        your browser with our calibration (α 0.33, β 0.96, ρ 2, δ 0.10) and the same
+        Yan He et al., &ldquo;RCK Model with Government Spending,&rdquo; <i>Journal of Research
+        in Applied and Financial Economics</i> 1(1), 2026. Each φ is solved live in your
+        browser with the paper&rsquo;s calibration (α 0.33, β 0.96, ρ 2, δ 0.10) and the same
         shooting method, starting from half the steady-state capital stock.
       </p>
     </article>

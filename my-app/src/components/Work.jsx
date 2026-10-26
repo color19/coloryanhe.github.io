@@ -1,5 +1,6 @@
 import ResearchBDC from './ResearchBDC'
 import ResearchRCK from './ResearchRCK'
+import ResearchScorecard from './ResearchScorecard'
 
 const stats = [
   { num: '4', text: 'internships, from a brokerage’s bond research desk to State Street’s data pipelines.' },
@@ -19,12 +20,6 @@ const work = [
     where: 'Internship · State Street',
     desc: 'Automated the data flows operations teams depend on, and made them fail less.',
     tools: 'SQL · Python',
-  },
-  {
-    title: 'Credit Scorecard',
-    where: 'Academic project',
-    desc: 'Logistic-regression scorecard built with Weight of Evidence and Information Value.',
-    tools: 'Python · WOE/IV',
   },
   {
     title: 'Empirical Asset Pricing',
@@ -71,6 +66,7 @@ function Work() {
           <h2>Research</h2>
           <span className="hand">hover the charts, they&rsquo;re live</span>
         </div>
+        <ResearchScorecard />
         <ResearchBDC />
         <ResearchRCK />
 
