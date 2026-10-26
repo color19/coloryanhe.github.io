@@ -745,80 +745,20 @@ button.btn-text { background: none; }
 /* ===== Toolkit: skills as holdings ===== */
 .skills { margin-top: clamp(80px, 10vw, 120px); }
 
-.hold-head,
-.hold-row {
+.caps {
   display: grid;
-  grid-template-columns: 40px minmax(200px, 1.3fr) minmax(140px, 1fr) 2fr;
-  gap: 18px;
-  align-items: center;
-}
-
-.hold-head {
-  margin-top: 18px;
-  padding: 0 0 8px 58px;
-  grid-template-columns: minmax(200px, 1.3fr) minmax(140px, 1fr) 2fr;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 24px;
+  padding: 4px 0 28px;
   border-bottom: 1px solid var(--line);
 }
 
-.hold-row {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  transition: background-color 0.15s ease;
-}
-
-.hold-row:hover { background: rgba(206, 70, 49, 0.05); }
-
-.hold-no {
-  font-size: 12px;
-  color: var(--ink-faint);
-  font-variant-numeric: tabular-nums;
-  padding-left: 4px;
-}
-
-.hold-name b { display: block; font-size: 16px; font-weight: 500; }
-.hold-name small { font-size: 12px; color: var(--ink-faint); }
-
-.hold-pos { display: flex; align-items: center; gap: 10px; }
-
-.hold-bar {
-  display: block;
-  flex: none;
-  height: 10px;
-  border-radius: 0 5px 5px 0;
-  background: var(--brick);
-}
-
-.hold-pos em {
-  font-style: normal;
-  font-size: 13px;
-  color: var(--ink-soft);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
-.hold-in { display: flex; flex-wrap: wrap; gap: 6px; }
-
-.hold-in a {
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: #fff;
-  font-size: 12.5px;
-  color: var(--ink);
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.hold-in a:hover { border-color: var(--brick); color: var(--brick); }
+.caps-col .eyebrow { margin-bottom: 14px; }
+.caps-col li { font-size: 15px; line-height: 1.5; padding: 3px 0; }
 
 @media (max-width: 800px) {
-  .hold-head { display: none; }
-  .hold-row { grid-template-columns: 32px 1fr; row-gap: 8px; }
-  .hold-pos, .hold-in { grid-column: 2; }
+  .caps { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
 }
 
 .skills-also {
