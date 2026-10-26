@@ -156,7 +156,7 @@ function ResearchBDC() {
   const show = (k) => (val(k, i) == null ? 'n/a' : fmt[k](val(k, i)))
 
   return (
-    <article className="research" data-reveal>
+    <article id="research-bdc" className="research" data-reveal>
       <div className="research-head">
         <div>
           <p className="eyebrow">Research · first author · empirical finance, May 2026</p>

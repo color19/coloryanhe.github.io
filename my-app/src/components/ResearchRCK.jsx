@@ -132,7 +132,7 @@ function ResearchRCK() {
   const t = hoverT
 
   return (
-    <article className="research" data-reveal>
+    <article id="research-rck" className="research" data-reveal>
       <div className="research-head">
         <div>
           <p className="eyebrow">Published · lead article, JRAFE inaugural issue · 2026</p>

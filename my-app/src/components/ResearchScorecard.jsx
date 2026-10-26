@@ -166,7 +166,7 @@ function OutcomePanel() {
 function ResearchScorecard() {
   const [hover, setHover] = useState(null)
   return (
-    <article className="research" data-reveal>
+    <article id="research-scorecard" className="research" data-reveal>
       <div className="research-head">
         <div>
           <p className="eyebrow">Research · solo project · credit risk modeling, March 2026</p>
