@@ -86,7 +86,7 @@ function Panel({ spec, base, cur, hoverT, setHoverT }) {
   const showBase = spec.key !== 'G'
   const last = cur[spec.key][T_SHOW]
   return (
-    <figure className="rck-panel">
+    <figure className="mini-panel">
       <figcaption>
         <b>{spec.title}</b>
         <span>{spec.unit}</span>
@@ -103,22 +103,22 @@ function Panel({ spec, base, cur, hoverT, setHoverT }) {
       >
         {spec.ticks.map((v) => (
           <g key={v}>
-            <line x1={M.l} x2={W - M.r} y1={y(v)} y2={y(v)} className={v === 0 ? 'rck-axis' : 'rck-grid'} />
-            <text x={M.l - 6} y={y(v) + 4} textAnchor="end" className="rck-tick">{v}</text>
+            <line x1={M.l} x2={W - M.r} y1={y(v)} y2={y(v)} className={v === 0 ? 'mini-axis' : 'mini-grid'} />
+            <text x={M.l - 6} y={y(v) + 4} textAnchor="end" className="mini-tick">{v}</text>
           </g>
         ))}
         {[0, 25, 50].map((t) => (
-          <text key={t} x={x(t)} y={H - 8} textAnchor="middle" className="rck-tick">{t}</text>
+          <text key={t} x={x(t)} y={H - 8} textAnchor="middle" className="mini-tick">{t}</text>
         ))}
-        {showBase && <path d={pathOf(base[spec.key], y)} className="rck-base" />}
-        <path d={pathOf(cur[spec.key], y)} className="rck-cur" />
-        <circle cx={x(T_SHOW)} cy={y(last)} r="4" className="rck-dot" />
-        <text x={x(T_SHOW) - 4} y={y(last) - 9} textAnchor="end" className="rck-end">{last.toFixed(2)}</text>
+        {showBase && <path d={pathOf(base[spec.key], y)} className="mini-base" />}
+        <path d={pathOf(cur[spec.key], y)} className="mini-cur" />
+        <circle cx={x(T_SHOW)} cy={y(last)} r="4" className="mini-dot" />
+        <text x={x(T_SHOW) - 4} y={y(last) - 9} textAnchor="end" className="mini-end">{last.toFixed(2)}</text>
         {hoverT != null && (
-          <line x1={x(hoverT)} x2={x(hoverT)} y1={M.t} y2={H - M.b} className="rck-cross" />
+          <line x1={x(hoverT)} x2={x(hoverT)} y1={M.t} y2={H - M.b} className="mini-cross" />
         )}
       </svg>
-      {spec.note && <p className="hand rck-note">{spec.note}</p>}
+      {spec.note && <p className="hand mini-note">{spec.note}</p>}
     </figure>
   )
 }
@@ -148,9 +148,9 @@ function ResearchRCK() {
         </p>
       </div>
 
-      <div className="rck-controls">
-        <span className="rck-label">Weight on public goods, φ</span>
-        <div className="rck-seg" role="radiogroup" aria-label="Weight on public goods">
+      <div className="mini-controls">
+        <span className="mini-label">Weight on public goods, φ</span>
+        <div className="mini-seg" role="radiogroup" aria-label="Weight on public goods">
           {PHIS.map((p) => (
             <button
               key={p}
@@ -166,23 +166,23 @@ function ResearchRCK() {
         </div>
       </div>
 
-      <div className="rck-legend">
+      <div className="mini-legend">
         <span><i className="k-base" />no government (φ = 0)</span>
         <span><i className="k-cur" />φ = {phi}</span>
-        <span className="rck-readout" aria-live="polite">
+        <span className="mini-readout" aria-live="polite">
           {t == null
             ? `Steady state: c* = ${fmt(cur.cStar)}, G* = ${fmt(cur.gStar)} · within 1% of c* by period ${cur.converge}`
             : `Period ${t}: capital ${fmt(cur.k[t])} · consumption ${fmt(cur.c[t])} (no gov. ${fmt(base.c[t])}) · government ${fmt(cur.G[t])}`}
         </span>
       </div>
 
-      <div className="rck-panels">
+      <div className="mini-panels">
         {PANELS.map((s) => (
           <Panel key={s.key} spec={s} base={base} cur={cur} hoverT={hoverT} setHoverT={setHoverT} />
         ))}
       </div>
 
-      <details className="rck-table">
+      <details className="mini-table">
         <summary>Show as table</summary>
         <table>
           <thead>

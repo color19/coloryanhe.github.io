@@ -1,3 +1,4 @@
+import ResearchBDC from './ResearchBDC'
 import ResearchRCK from './ResearchRCK'
 
 const stats = [
@@ -24,6 +25,12 @@ const work = [
     where: 'Academic project',
     desc: 'Logistic-regression scorecard built with Weight of Evidence and Information Value.',
     tools: 'Python · WOE/IV',
+  },
+  {
+    title: 'Empirical Asset Pricing',
+    where: 'Coursework · team of two',
+    desc: 'On 30 industry portfolios, 1963–2024, the top five principal components pass the GRS test (F = 0.86) while Fama–French five is rejected (F = 2.79).',
+    tools: 'Python · PCA · GRS · Fama–MacBeth',
   },
   {
     title: 'Panel Data Econometrics',
@@ -60,6 +67,11 @@ function Work() {
           ))}
         </div>
 
+        <div className="research-section-head" data-reveal>
+          <h2>Research</h2>
+          <span className="hand">hover the charts, they&rsquo;re live</span>
+        </div>
+        <ResearchBDC />
         <ResearchRCK />
 
         <div className="work-list">
