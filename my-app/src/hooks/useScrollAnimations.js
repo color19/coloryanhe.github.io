@@ -222,6 +222,21 @@ export function useScrollAnimations() {
       })
 
       /* ============================================================
+         FEATURED PROJECT — card rises, then body children stagger
+         ============================================================ */
+      const featured = document.querySelector('.featured-project')
+      if (featured) {
+        gsap.from(featured, {
+          opacity: 0, y: 60, duration: 1.2, ease: EASE,
+          scrollTrigger: { trigger: featured, start: 'top 82%' },
+        })
+        gsap.from(featured.querySelectorAll('.featured-body > *'), {
+          opacity: 0, y: 24, duration: 0.9, ease: EASE, stagger: 0.08, delay: 0.25,
+          scrollTrigger: { trigger: featured, start: 'top 82%' },
+        })
+      }
+
+      /* ============================================================
          PORTFOLIO — numeral overshoots, glyph strokes draw, body slides
          ============================================================ */
       gsap.utils.toArray('.project').forEach((proj) => {

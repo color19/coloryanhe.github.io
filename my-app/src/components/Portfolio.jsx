@@ -61,6 +61,60 @@ function Portfolio() {
         </h2>
       </header>
 
+      <div className="featured-project">
+        <a
+          className="featured-media"
+          href="https://color19.github.io/studyroom/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open the Studyroom live demo"
+        >
+          <img
+            src="/studyroom-home.png"
+            alt="Studyroom home screen: CFA subjects shown as portfolio holdings against syllabus target weights"
+            loading="lazy"
+          />
+        </a>
+        <div className="featured-body">
+          <div className="project-meta">
+            <span className="project-type rainbow">Featured · Open Source · Live</span>
+          </div>
+          <h3 className="project-title">Studyroom</h3>
+          <p className="project-desc">
+            A single-file study app that treats the CFA curriculum like a
+            portfolio: syllabus weights are the target allocation, practiced
+            questions are the holdings, and each session is a rebalancing
+            trade. Spaced repetition, timed mocks, zero backend &mdash; built
+            for my own Level I prep, open-sourced for any multiple-choice exam.
+          </p>
+          <ul className="project-tags">
+            {['MIT Open Source', 'Single-file HTML', 'Spaced Repetition', 'Local-first'].map((tag) => (
+              <li className="project-tag" key={tag}>{tag}</li>
+            ))}
+          </ul>
+          <div className="featured-links">
+            <a
+              href="https://color19.github.io/studyroom/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary magnetic"
+            >
+              <span className="btn-label">Try It Live</span>
+              <span className="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://github.com/color19/studyroom"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost magnetic"
+            >
+              <span className="btn-label">Source</span>
+              <span className="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <ol className="project-stream">
         {projects.map((p, i) => (
           <li
