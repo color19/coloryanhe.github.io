@@ -139,8 +139,8 @@ function HowItThinks() {
           </div>
           <figure className="pj-how-shot">
             <img
-              src="/shots/studyroom.png"
-              alt="Studyroom home screen: subjects shown as holdings against their target weights"
+              src="/shots/studyroom.jpg"
+              alt="Studyroom dashboard: ten CFA topics as holdings against their exam-weight targets"
               loading="lazy"
             />
             <figcaption className="hand">my copy, mid-prep</figcaption>

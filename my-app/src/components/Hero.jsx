@@ -1,5 +1,5 @@
 const shots = [
-  { src: '/shots/studyroom.png', alt: 'Studyroom: CFA subjects shown as portfolio holdings against target weights' },
+  { src: '/shots/studyroom.jpg', alt: 'Studyroom: ten CFA topics as portfolio holdings against their exam-weight targets' },
   { src: '/shots/runway.jpg', alt: 'Runway, minimal edition: still 2h15m to reach today’s pace across three projects' },
 ]
 
