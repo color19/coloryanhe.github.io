@@ -188,7 +188,7 @@ function ResearchScorecard() {
         <span><i className="k-seg-d" />declined</span>
         <span className="mini-readout" aria-live="polite">
           {hover == null
-            ? 'Catches 70.5% of bad loans at the KS cutoff. A 5% bad-rate policy sets the cutoff at 600.'
+            ? 'At the KS cutoff of 592: approves 60.2% of held-out applicants, 3.4% of them go bad, and catches 70.5% of bad loans.'
             : `Score ${hover}: probability of default ${(pdOf(hover) * 100).toFixed(2)}% · odds ${oddsOf(hover).toFixed(1)} : 1 · ${hover >= 600 ? 'approved' : 'declined'} under the 600 policy`}
         </span>
       </div>
@@ -218,9 +218,10 @@ function ResearchScorecard() {
 
       <p className="research-credit">
         Yan He. Python (pandas, statsmodels); score scaled with PDO 20 and 600 points at
-        19:1 odds. Cutoffs: 592 maximises KS on training data, 600 keeps the approved bad
-        rate under 5% (46.3% approved, 2.71% bad), 612 adds one PDO for a stress scenario.
-        Only model outputs are shown; no loan-level data.
+        19:1 odds. Cutoffs: 592 maximises KS on training data, 600 is the policy line that
+        keeps the approved bad rate under 5%, and 612 adds one PDO for a stress scenario.
+        Approval figures come from the validation confusion matrix. Only model outputs are
+        shown; no loan-level data.
       </p>
     </article>
   )

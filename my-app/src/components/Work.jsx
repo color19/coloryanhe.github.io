@@ -3,8 +3,9 @@ import ResearchRCK from './ResearchRCK'
 import ResearchScorecard from './ResearchScorecard'
 
 const stats = [
-  { num: '4', text: 'internships, from a brokerage’s bond research desk to State Street’s data pipelines.' },
+  { num: '1', text: 'published paper, the lead article in the inaugural issue of JRAFE.' },
   { num: '4.0', text: 'GPA, M.S. in Financial Economics at Johns Hopkins.' },
+  { num: '4', text: 'internships, from a brokerage’s bond research desk to State Street’s data pipelines.' },
   { num: '30', text: 'versions of Studyroom, rebuilt around how I actually study.' },
 ]
 
