@@ -3,8 +3,9 @@ import PaperArt from './PaperArt'
 
 const NAV = [
   { href: '/#top', label: 'Home' },
+  { href: '/#experience', label: 'Experience' },
   { href: '/#projects', label: 'Projects', active: true },
-  { href: '/#work', label: 'Work' },
+  { href: '/#research', label: 'Research' },
   { href: '/#contact', label: 'Contact' },
 ]
 
@@ -52,8 +53,8 @@ export function SectionMarker() {
 }
 
 const LINKS = [
-  [['Home', '/#top'], ['Projects', '/#projects'], ['Work', '/#work']],
-  [['Studyroom', '/projects/studyroom/'], ['Runway', 'https://color19.github.io/runway/en/'], ['Research', '/#work']],
+  [['Home', '/#top'], ['Experience', '/#experience'], ['Projects', '/#projects']],
+  [['Studyroom', '/projects/studyroom/'], ['Runway', 'https://color19.github.io/runway/en/'], ['Research', '/#research']],
   [['yanhe2026@gmail.com', 'mailto:yanhe2026@gmail.com'], ['LinkedIn', 'https://www.linkedin.com/in/colorho/'], ['GitHub', 'https://github.com/color19']],
 ]
 

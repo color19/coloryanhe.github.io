@@ -10,7 +10,10 @@ function Hero() {
     <header id="top" className="hero paper">
       <div className="wrap hero-grid">
         <div>
-          <p className="eyebrow">Financial Economics · Johns Hopkins · Washington, DC</p>
+          <p className="hero-cred">
+            <span>M.S. Financial Economics, Johns Hopkins</span>
+            <span>4.0 GPA</span>
+          </p>
           <div className="hero-name">
             <h1>Yan He</h1>
             <span className="hand">call me Color</span>
@@ -20,10 +23,16 @@ function Hero() {
             finance a little less grey.
           </p>
           <p className="hero-sub">
-            This is where I put the work: what I&rsquo;ve built, what I&rsquo;ve
-            learned, and what I haven&rsquo;t figured out yet.
+            This is where I put the work: the research, the roles, and the AI
+            tools I&rsquo;ve built and actually use.
           </p>
-          <p className="hero-open eyebrow">Open to investment banking, research &amp; quant roles</p>
+          <div className="hero-actions">
+            <a className="btn btn-solid" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              Résumé (PDF) <span aria-hidden="true">↗</span>
+            </a>
+            <a className="btn btn-text" href="mailto:yanhe2026@gmail.com">yanhe2026@gmail.com</a>
+          </div>
+          <p className="hero-open eyebrow">Graduating December 2026 · open to investment banking, research &amp; quant roles</p>
         </div>
 
         <div className="hero-window-wrap">
@@ -39,7 +48,7 @@ function Hero() {
             ))}
           </div>
           <a href="#projects" className="hand hero-window-note">
-            two tools I built for myself &darr;
+            tools I built and use &darr;
           </a>
         </div>
       </div>

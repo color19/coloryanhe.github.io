@@ -27,6 +27,15 @@ const projects = [
     art: 'glide',
     note: 'deadline → daily pace',
   },
+  {
+    tone: 'mist',
+    kicker: 'Runs every market day',
+    title: 'Autotrader',
+    desc: 'An AI trading agent that runs on its own schedule. Each morning it reads the news for the day’s themes, builds a list of candidates, has a panel of LLM analysts argue each one, and places small trades with take-profit rules. Then it keeps score: every rating is checked against the stock’s return 1, 5 and 20 trading days later, against the S&P 500.',
+    status: 'Private · built on the open-source TradingAgents framework',
+    art: 'signal',
+    note: 'news → rating → trade → score',
+  },
 ]
 
 /* Fixed star positions so the sky doesn't reshuffle on every render */
@@ -56,9 +65,9 @@ function Projects() {
             Clean numbers.
           </h2>
           <p>
-            I build tools when the ones I need don&rsquo;t exist. Two
-            projects, one thread: each turns a decision I kept overthinking
-            into a number I can act on.
+            I build tools when the ones I need don&rsquo;t exist, these days
+            with AI agents, and then I use them. Three projects, one thread:
+            each turns a decision I kept overthinking into a number I can act on.
           </p>
         </div>
 
@@ -80,15 +89,17 @@ function Projects() {
                       Watch the 74s tour
                     </button>
                   )}
-                  <a
-                    className={p.page ? 'btn btn-text' : 'btn btn-solid'}
-                    href={p.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Try it live <span aria-hidden="true">↗</span>
-                  </a>
-                  {!p.page && (
+                  {p.live && (
+                    <a
+                      className={p.page ? 'btn btn-text' : 'btn btn-solid'}
+                      href={p.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Try it live <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {!p.page && p.source && (
                     <a className="btn btn-text" href={p.source} target="_blank" rel="noopener noreferrer">
                       Source
                     </a>
@@ -105,7 +116,7 @@ function Projects() {
         </div>
 
         <p className="projects-foot">
-          Both are single HTML files that run in the browser, with no account and no server. Your data stays on your machine.
+          Studyroom and Runway are single HTML files that run in the browser, with no account and no server. Your data stays on your machine.
         </p>
       </div>
 

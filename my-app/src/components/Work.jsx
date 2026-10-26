@@ -3,28 +3,7 @@ import ResearchRCK from './ResearchRCK'
 import ResearchScorecard from './ResearchScorecard'
 import Skills from './Skills'
 
-const stats = [
-  { num: '1', text: 'published paper, the lead article in the inaugural issue of JRAFE.' },
-  { num: '4.0', text: 'GPA, M.S. in Financial Economics at Johns Hopkins.' },
-  { num: '4', text: 'internships, from a brokerage’s bond research desk to State Street’s data pipelines.' },
-  { num: '30', text: 'versions of Studyroom, rebuilt around how I actually study.' },
-]
-
 const work = [
-  {
-    id: 'work-fixed-income',
-    title: 'Fixed Income Research',
-    where: 'Internship · Chinese brokerage',
-    desc: 'Bond market analysis: yield dynamics and what they say about the macro picture.',
-    tools: 'Bloomberg · R',
-  },
-  {
-    id: 'work-pipelines',
-    title: 'Operational Data Pipelines',
-    where: 'Internship · State Street',
-    desc: 'Automated the data flows operations teams depend on, and made them fail less.',
-    tools: 'SQL · Python',
-  },
   {
     id: 'work-asset-pricing',
     title: 'Empirical Asset Pricing',
@@ -42,8 +21,8 @@ const work = [
   {
     id: 'work-financial-model',
     title: 'Financial Model',
-    where: 'Academic project',
-    desc: 'Forecasting, DCF valuation, and scenario analysis in one framework.',
+    where: 'Coursework',
+    desc: 'Forecasting, DCF valuation, and scenario analysis in one Excel framework.',
     tools: 'Excel',
   },
   {
@@ -57,19 +36,8 @@ const work = [
 
 function Work() {
   return (
-    <section id="work" className="work paper">
+    <section id="research" className="work work-research paper">
       <div className="wrap">
-        <h2 className="work-title" data-reveal>New grad. Not new to the work.</h2>
-
-        <div className="work-stats">
-          {stats.map((s) => (
-            <div className="work-stat" key={s.num} data-reveal>
-              <div className="num">{s.num}</div>
-              <p>{s.text}</p>
-            </div>
-          ))}
-        </div>
-
         <div className="research-section-head" data-reveal>
           <h2>Research</h2>
           <span className="hand">hover the charts, they&rsquo;re live</span>
@@ -80,8 +48,8 @@ function Work() {
 
         <div className="work-list">
           <div className="work-list-head" data-reveal>
-            <h2>The finance work</h2>
-            <span className="hand">samples &amp; details on request</span>
+            <h2>Coursework &amp; projects</h2>
+            <span className="hand">the smaller pieces</span>
           </div>
           <ul>
             {work.map((w) => (

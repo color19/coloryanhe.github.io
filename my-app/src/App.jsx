@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Intro from './components/Intro'
 import Projects from './components/Projects'
+import Experience from './components/Experience'
 import Work from './components/Work'
 import NotYet from './components/NotYet'
 import Contact from './components/Contact'
@@ -16,6 +17,7 @@ function App() {
       <main>
         <Hero />
         <Intro />
+        <Experience />
         <Projects />
         <Work />
         <NotYet />

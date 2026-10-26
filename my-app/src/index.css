@@ -5,7 +5,7 @@
   --paper-2: #f3f0e7;
   --ink: #0a0a0a;
   --ink-soft: rgba(10, 10, 10, 0.64);
-  --ink-faint: rgba(10, 10, 10, 0.4);
+  --ink-faint: rgba(10, 10, 10, 0.58);
   --line: rgba(10, 10, 10, 0.1);
 
   --navy: #0b1f3a;
@@ -14,6 +14,8 @@
 
   --sage: #e5ebe2;
   --sage-ink: #2f4a3a;
+  --mist: #dbe5ef;
+  --mist-ink: #1d3a5c;
 
   --sans: 'Host Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --hand: 'Caveat', cursive;

@@ -1,7 +1,7 @@
 const notes = [
   {
     label: '01 · Who I am',
-    body: 'A financial economist by training and a builder by habit. I’ve done fixed income research at a Chinese brokerage, data pipeline work at State Street, and credit risk modeling, and when the tools I need don’t exist, I build them.',
+    body: 'A financial economist by training and a builder by habit. I’ve done bond research at Huatai Securities, data pipelines at State Street and venture deal analytics at AfriLabs. When the tools I need don’t exist, I build them, these days with AI agents.',
   },
   {
     label: '02 · Where I’m going',

@@ -117,6 +117,14 @@ button.btn-text { background: none; }
 
 .nav a:hover { color: var(--ink); }
 
+.nav a.nav-resume {
+  margin-left: 2px;
+  background: var(--navy);
+  color: var(--paper);
+}
+
+.nav a.nav-resume:hover { background: #142c4f; }
+
 .nav a.is-active {
   background: var(--paper);
   color: var(--ink);
@@ -185,6 +193,26 @@ button.btn-text { background: none; }
   border-radius: 50%;
   background: #3f9a5c;
   box-shadow: 0 0 0 4px rgba(63, 154, 92, 0.16);
+}
+
+.hero-cred {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.hero-cred span { white-space: nowrap; }
+.hero-cred span + span::before { content: '·'; margin: 0 9px; }
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin-top: 28px;
 }
 
 /* A framed window that cycles through what I've built */
@@ -309,6 +337,7 @@ button.btn-text { background: none; }
 
 .project-card.tone-cream { background-color: var(--paper); }
 .project-card.tone-sage { background-color: var(--sage); --card-ink: var(--sage-ink); }
+.project-card.tone-mist { background-color: var(--mist); --card-ink: var(--mist-ink); }
 
 .project-card h3 {
   font-size: clamp(40px, 5vw, 54px);
@@ -644,6 +673,10 @@ button.btn-text { background: none; }
 .research-section-head .hand { color: var(--ink-soft); }
 
 .research-section-head + .research { margin-top: 28px; }
+
+.work-research { padding-top: clamp(96px, 12vw, 140px); }
+.work-research .research-section-head { margin-top: 0; }
+.work-research .research-section-head h2 { font-size: clamp(40px, 5.4vw, 60px); letter-spacing: -0.045em; }
 
 .mini-note {
   margin-top: 2px;
@@ -1059,7 +1092,12 @@ button.btn-text { background: none; }
 }
 
 @media (max-width: 600px) {
-  .nav a { padding: 7px 12px; font-size: 13px; }
+  .nav a { padding: 7px 11px; font-size: 13px; white-space: nowrap; }
+  .nav a[href="#top"],
+  .nav a[href="#contact"] { display: none; }
+
+  .hero-cred { flex-direction: column; }
+  .hero-cred span + span::before { content: none; }
 
   .work-stats { grid-template-columns: 1fr; gap: 36px; }
 

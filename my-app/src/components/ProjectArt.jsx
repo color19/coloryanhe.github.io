@@ -41,7 +41,23 @@ function Glide() {
   )
 }
 
-const KIND = { allocation: Allocation, glide: Glide }
+/* Autotrader — a price line; the rating (dot) is scored against where
+   the price went next */
+function Signal() {
+  return (
+    <svg viewBox={VIEW} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 18 V146 H204" />
+      <path d="M30 120 L52 108 L70 114 L92 88 L108 96" />
+      <path d="M108 96 L132 70 L150 78 L176 46 L198 40" strokeDasharray="3 5" />
+      <line x1="108" y1="96" x2="108" y2="146" opacity="0.45" />
+      <line x1="176" y1="46" x2="176" y2="146" opacity="0.45" strokeDasharray="2 4" />
+      <circle cx="108" cy="96" r="6" fill={BRICK} stroke={BRICK} />
+      <path d="M182 30 l6 6 l12 -14" stroke={BRICK} strokeWidth="2" />
+    </svg>
+  )
+}
+
+const KIND = { allocation: Allocation, glide: Glide, signal: Signal }
 
 function ProjectArt({ kind }) {
   const Art = KIND[kind]
