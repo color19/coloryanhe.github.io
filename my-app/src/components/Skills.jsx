@@ -1,159 +1,161 @@
-import ICONS from '../data/tool-icons.json'
-import PaperArt from './project/PaperArt'
+import { useState } from 'react'
 
-/* Skills from her current résumés. A tool or method links only when this
-   page shows work that used it; the rest stay plain. Brand marks come from
-   Simple Icons (CC0); brands it doesn't carry get a lettered tile in their
-   colour. */
+/* Skills as a dot matrix: each dot is a piece of work on this page that used
+   the skill. Every mapping was checked against the project files (code,
+   reports, notebooks); tools with no project here are listed underneath. */
 
-const tools = [
-  { name: 'Python', icon: { si: 'python' }, note: 'pandas · NumPy · scikit-learn · statsmodels', href: '#research-scorecard' },
-  { name: 'SQL', icon: { glyph: 'db', bg: '#3e6a9e' }, href: '#work-pipelines' },
-  { name: 'R', icon: { si: 'r' }, href: '#work-panel' },
-  { name: 'Stata', icon: { text: 'S', bg: '#1a5d96' }, href: '#work-panel' },
-  { name: 'Excel', icon: { text: 'X', bg: '#217346' }, note: 'Power Query · pivots · macros', href: '#work-financial-model' },
-  { name: 'Power BI', icon: { glyph: 'bars', bg: '#f2c811', fg: '#1b1b1b' }, href: '#work-dashboard' },
-  { name: 'Bloomberg', icon: { text: 'B', bg: '#111111', fg: '#fb8b1e' }, href: '#work-fixed-income' },
-  { name: 'WRDS', icon: { text: 'WRDS', bg: '#0b2a55' }, note: 'Compustat · CRSP', href: '#research-bdc' },
-  { name: 'EViews', icon: { text: 'EV', bg: '#5b6b7f' } },
-  { name: 'Wind', icon: { text: 'W', bg: '#d7261e' } },
-  { name: 'Git', icon: { si: 'git' } },
-  { name: 'Claude Code', icon: { si: 'claude' } },
-  { name: 'Cursor', icon: { si: 'cursor' } },
-  { name: 'GitHub Copilot', icon: { si: 'githubcopilot' } },
+const COLS = [
+  { key: 'sc', label: 'Credit scorecard', href: '#research-scorecard', group: 'Research' },
+  { key: 'bdc', label: 'BDC paper', href: '#research-bdc', group: 'Research' },
+  { key: 'rck', label: 'RCK paper', href: '#research-rck', group: 'Research' },
+  { key: 'study', label: 'Studyroom', href: '#project-studyroom', group: 'Built' },
+  { key: 'runway', label: 'Runway', href: '#project-runway', group: 'Built' },
+  { key: 'bond', label: 'Bond research', href: '#work-fixed-income', group: 'Internships' },
+  { key: 'ss', label: 'State Street', href: '#work-pipelines', group: 'Internships' },
+  { key: 'ap', label: 'Asset pricing', href: '#work-asset-pricing', group: 'Coursework' },
+  { key: 'panel', label: 'Panel data', href: '#work-panel', group: 'Coursework' },
+  { key: 'dcf', label: 'Financial model', href: '#work-financial-model', group: 'Coursework' },
+  { key: 'dash', label: 'Dashboard', href: '#work-dashboard', group: 'Coursework' },
 ]
 
-const methods = [
+const GROUPS = [
+  {
+    label: 'Data & programming',
+    rows: [
+      ['Python', ['sc', 'bdc', 'rck', 'ss', 'ap']],
+      ['SQL', ['bdc', 'ss']],
+      ['R', ['bond', 'panel']],
+      ['WRDS: Compustat, CRSP', ['bdc']],
+      ['Stata', ['panel']],
+      ['Excel', ['dcf']],
+      ['Power BI', ['dash']],
+      ['Bloomberg', ['bond']],
+      ['LaTeX', ['bdc']],
+    ],
+  },
+  {
+    label: 'Methods',
+    rows: [
+      ['Data visualization', ['bdc', 'rck', 'study', 'ap', 'dash']],
+      ['Regression and econometrics', ['sc', 'bdc', 'ap', 'panel']],
+      ['Factor models: PCA, GRS, Fama–MacBeth', ['ap']],
+      ['Network analysis', ['ap']],
+      ['Dynamic models, solved numerically', ['rck']],
+    ],
+  },
   {
     label: 'Finance',
-    art: 'finance',
-    tone: '#f3ece0',
-    items: [
-      { name: 'Credit scorecards and cutoff analysis', href: '#research-scorecard' },
-      { name: 'Financial statement and ratio analysis', href: '#research-bdc' },
-      { name: 'Fixed income valuation and risk', href: '#work-fixed-income' },
-      { name: 'Financial modeling, DCF', href: '#work-financial-model' },
-      { name: 'Investment memos and research writing', href: '#research-rck' },
+    rows: [
+      ['Credit risk', ['sc', 'bdc']],
+      ['Research writing', ['bdc', 'rck']],
+      ['Financial statement and ratio analysis', ['bdc']],
+      ['Fixed income', ['bond']],
+      ['Valuation, DCF', ['dcf']],
     ],
   },
   {
-    label: 'Quant & econometrics',
-    art: 'quant',
-    tone: '#e5ebe2',
-    items: [
-      { name: 'Panel data: fixed effects, IV, DID', href: '#work-panel' },
-      { name: 'Factor models: PCA, GRS, Fama–MacBeth', href: '#work-asset-pricing' },
-      { name: 'Dynamic models, solved numerically', href: '#research-rck' },
-      { name: 'Event studies' },
-      { name: 'Time series' },
-    ],
-  },
-  {
-    label: 'AI & building',
-    art: 'ai',
-    tone: '#dbe5ef',
-    items: [
-      { name: 'Apps built end to end with AI agents', href: '#projects' },
-      { name: 'Single-file web apps, shipped open source', href: '#projects' },
-      { name: 'LLM agent workflows with output validation' },
+    label: 'Building',
+    rows: [
+      ['Single-file web apps', ['study', 'runway']],
+      ['Apps built with AI agents', ['study']],
     ],
   },
 ]
 
-function ToolIcon({ icon }) {
-  if (icon.si) {
-    const s = ICONS[icon.si]
-    return (
-      <svg className="tool-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d={s.path} fill={s.hex} />
-      </svg>
-    )
-  }
-  const fg = icon.fg || '#ffffff'
-  return (
-    <svg className="tool-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <rect width="24" height="24" rx="5" fill={icon.bg} />
-      {icon.glyph === 'db' && (
-        <g fill="none" stroke={fg} strokeWidth="1.6">
-          <ellipse cx="12" cy="7" rx="6" ry="2.4" />
-          <path d="M6 7v10c0 1.3 2.7 2.4 6 2.4s6-1.1 6-2.4V7M6 12c0 1.3 2.7 2.4 6 2.4s6-1.1 6-2.4" />
-        </g>
-      )}
-      {icon.glyph === 'bars' && (
-        <g fill={fg}>
-          <rect x="6" y="12" width="3" height="7" rx="1" />
-          <rect x="10.5" y="8" width="3" height="11" rx="1" />
-          <rect x="15" y="5" width="3" height="14" rx="1" />
-        </g>
-      )}
-      {icon.text && (
-        <text
-          x="12"
-          y={icon.text.length > 2 ? 15 : 16.5}
-          textAnchor="middle"
-          fill={fg}
-          fontFamily="var(--sans)"
-          fontWeight="700"
-          fontSize={icon.text.length > 2 ? 7.5 : 12}
-        >
-          {icon.text}
-        </text>
-      )}
-    </svg>
-  )
-}
+const MAX = Math.max(...GROUPS.flatMap((g) => g.rows.map((r) => r[1].length)))
 
-function Tool({ t }) {
-  const body = (
-    <>
-      <ToolIcon icon={t.icon} />
-      <span className="tool-text">
-        <b>{t.name}</b>
-        {t.note && <small>{t.note}</small>}
-      </span>
-      {t.href && <span className="tool-proof">used here ↘</span>}
-    </>
-  )
-  return t.href ? (
-    <a className="tool is-linked" href={t.href}>{body}</a>
-  ) : (
-    <div className="tool">{body}</div>
-  )
-}
+/* consecutive columns sharing a group label, for the top header row */
+const COL_GROUPS = COLS.reduce((acc, c) => {
+  const last = acc[acc.length - 1]
+  if (last && last.label === c.group) last.span++
+  else acc.push({ label: c.group, span: 1 })
+  return acc
+}, [])
 
 function Skills() {
+  const [row, setRow] = useState(null)
+  const [col, setCol] = useState(null)
+  const rowCols = row ? GROUPS.flatMap((g) => g.rows).find((r) => r[0] === row)[1] : []
+
   return (
     <div className="skills" id="skills">
       <div className="work-list-head" data-reveal>
-        <h2>The toolkit</h2>
-        <span className="hand">click one to see where I used it</span>
+        <h2>The toolkit, with receipts</h2>
+        <span className="hand">every dot is a piece of work on this page</span>
       </div>
 
-      <p className="eyebrow skills-sub">Tools I reach for</p>
-      <div className="tool-wall" data-reveal>
-        {tools.map((t) => <Tool key={t.name} t={t} />)}
-      </div>
-
-      <div className="method-grid">
-        {methods.map((g) => (
-          <article key={g.label} className="method-card" style={{ background: g.tone }} data-reveal>
-            <PaperArt kind={g.art} size={150} />
-            <h3>{g.label}</h3>
-            <ul>
-              {g.items.map((it) => (
-                <li key={it.name}>
-                  {it.href ? (
-                    <a href={it.href}>{it.name} <span aria-hidden="true">↘</span></a>
-                  ) : (
-                    <span>{it.name}</span>
-                  )}
-                </li>
+      <div className="kit-scroll" data-reveal>
+        <table className="kit" onMouseLeave={() => { setRow(null); setCol(null) }}>
+          <colgroup>
+            <col className="kit-c-name" />
+            {COLS.map((c) => <col key={c.key} />)}
+            <col className="kit-c-count" />
+          </colgroup>
+          <thead>
+            <tr className="kit-groups">
+              <th aria-hidden="true" />
+              {COL_GROUPS.map((g) => (
+                <th key={g.label} colSpan={g.span} scope="colgroup"><span>{g.label}</span></th>
               ))}
-            </ul>
-          </article>
-        ))}
+              <th aria-hidden="true" />
+            </tr>
+            <tr className="kit-cols">
+              <th scope="col" className="kit-corner">Skill</th>
+              {COLS.map((c) => (
+                <th
+                  key={c.key}
+                  scope="col"
+                  className={col === c.key || rowCols.includes(c.key) ? 'is-on' : undefined}
+                  onMouseEnter={() => { setCol(c.key); setRow(null) }}
+                >
+                  <a href={c.href}><span>{c.label}</span></a>
+                </th>
+              ))}
+              <th scope="col" className="kit-count-h">Used in</th>
+            </tr>
+          </thead>
+          {GROUPS.map((g) => (
+            <tbody key={g.label}>
+              <tr className="kit-group">
+                <th colSpan={COLS.length + 2} scope="rowgroup">{g.label}</th>
+              </tr>
+              {g.rows.map(([name, used]) => {
+                const onRow = row === name || (col && used.includes(col))
+                return (
+                  <tr
+                    key={name}
+                    className={onRow ? 'is-on' : undefined}
+                    onMouseEnter={() => { setRow(name); setCol(null) }}
+                  >
+                    <th scope="row">{name}</th>
+                    {COLS.map((c) => {
+                      const hit = used.includes(c.key)
+                      return (
+                        <td key={c.key} className={col === c.key ? 'is-col' : undefined}>
+                          {hit ? (
+                            <span className="kit-dot" role="img" aria-label={`used in ${c.label}`} />
+                          ) : (
+                            <span className="kit-empty" aria-hidden="true" />
+                          )}
+                        </td>
+                      )
+                    })}
+                    <td className="kit-count">
+                      <span className="kit-bar" style={{ width: `${(used.length / MAX) * 100}%` }} />
+                      <b>{used.length}</b>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          ))}
+        </table>
       </div>
 
+      <p className="skills-also">
+        Also in the kit, without a project on this page yet: EViews, Wind, Git, Claude Code,
+        Cursor, GitHub Copilot.
+      </p>
       <p className="skills-foot">
         <span>Mandarin (native) · English (professional)</span>
         <span>CFA Level I candidate, exam November 2026</span>

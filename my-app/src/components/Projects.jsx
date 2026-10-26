@@ -64,7 +64,7 @@ function Projects() {
 
         <div className="project-cards">
           {projects.map((p) => (
-            <article key={p.title} className={`project-card tone-${p.tone}`} data-reveal>
+            <article key={p.title} id={`project-${p.title.toLowerCase()}`} className={`project-card tone-${p.tone}`} data-reveal>
               <div>
                 <p className="kicker">{p.kicker}</p>
                 <h3>{p.title}</h3>

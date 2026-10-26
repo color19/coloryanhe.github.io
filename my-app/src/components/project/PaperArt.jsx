@@ -9,7 +9,6 @@ const C = {
   ochre: '#e2a43b',
   green: '#3d7a52',
   paper: '#f6f2e8',
-  navy: '#0b1f3a',
 }
 
 const SCENES = {
@@ -55,36 +54,6 @@ const SCENES = {
       <rect x="22" y="36" width="82" height="64" rx="4" fill={C.brick} />
       <rect x="108" y="36" width="82" height="64" rx="4" fill={C.blue} />
       <rect x="22" y="112" width="168" height="16" rx="3" fill={C.ochre} />
-    </>
-  ),
-  /* finance: rising bars and a coin */
-  finance: (
-    <>
-      <rect x="30" y="98" width="34" height="52" rx="3" fill={C.blue} />
-      <rect x="72" y="70" width="34" height="80" rx="3" fill={C.ochre} />
-      <rect x="114" y="40" width="34" height="110" rx="3" fill={C.brick} />
-      <circle cx="186" cy="56" r="24" fill={C.green} />
-      <rect x="22" y="152" width="190" height="10" rx="2" fill={C.navy} />
-    </>
-  ),
-  /* quant: a scatter with a fitted line */
-  quant: (
-    <>
-      {[[40, 132, 9], [66, 116, 7], [88, 120, 10], [110, 92, 8], [136, 84, 11], [160, 62, 8], [186, 50, 10], [124, 112, 6]].map(([x, y, r]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r={r} fill={x % 3 ? C.blue : C.ochre} />
-      ))}
-      <rect x="20" y="88" width="200" height="9" rx="2" fill={C.brick} transform="rotate(-21 120 92)" />
-    </>
-  ),
-  /* AI: a few nodes wired together */
-  ai: (
-    <>
-      <rect x="58" y="62" width="110" height="8" rx="2" fill={C.navy} transform="rotate(22 113 66)" />
-      <rect x="58" y="104" width="110" height="8" rx="2" fill={C.navy} transform="rotate(-24 113 108)" />
-      <circle cx="56" cy="50" r="20" fill={C.brick} />
-      <circle cx="58" cy="128" r="16" fill={C.ochre} />
-      <circle cx="170" cy="88" r="28" fill={C.blue} />
-      <circle cx="120" cy="36" r="10" fill={C.green} />
     </>
   ),
   /* spaced comebacks on days 1, 3, 7, 14, 29 */
