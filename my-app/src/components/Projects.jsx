@@ -10,7 +10,7 @@ const projects = [
     desc: 'A study app that treats the CFA curriculum like a portfolio. Syllabus weights are the target allocation, practiced questions are the holdings, and every session is a rebalancing trade toward whatever I’m underweight in.',
     live: 'https://color19.github.io/studyroom/',
     source: 'https://github.com/color19/studyroom',
-    status: 'Open source · Chinese UI, for Chinese-speaking candidates',
+    status: 'Open source · Bilingual UI (English / 中文)',
     page: '/projects/studyroom/',
     tour: true,
     art: 'allocation',
