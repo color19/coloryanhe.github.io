@@ -1,64 +1,42 @@
+const shots = [
+  { src: '/shots/studyroom.png', alt: 'Studyroom: CFA subjects shown as portfolio holdings against target weights' },
+  { src: '/shots/runway.jpg', alt: 'Runway: a calendar that works back from deadlines to a daily pace' },
+  { src: '/shots/away.jpg', alt: 'Away: destinations ranked by flight price times city experience' },
+]
+
 function Hero() {
   return (
-    <section className="hero" data-section="hero">
-      <div className="hero-bg" />
+    <header id="top" className="hero paper">
+      <div className="wrap hero-grid">
+        <div>
+          <p className="eyebrow">Financial Economics · Johns Hopkins · Washington, DC</p>
+          <div className="hero-name">
+            <h1>Yan He</h1>
+            <span className="hand">call me Color</span>
+          </div>
+          <p className="hero-statement">
+            I model markets, build tools that think like an analyst, and make
+            finance a little less grey.
+          </p>
+          <p className="hero-sub">
+            This is where I put the work: what I&rsquo;ve built, what I&rsquo;ve
+            learned, and what I haven&rsquo;t figured out yet.
+          </p>
+          <p className="hero-open eyebrow">Open to investment banking, research &amp; quant roles</p>
+        </div>
 
-      <div className="hero-content">
-        <p className="hero-tag">
-          Financial Economics &middot; Johns Hopkins University
-        </p>
-        <h1 className="hero-title">
-          <span className="hero-line">Finance.</span>
-          <span className="hero-line"><em>Colorfully.</em></span>
-        </h1>
-        <p className="hero-desc">
-          I&rsquo;m Yan &mdash; a financial economist who believes data should be
-          beautiful, models should be rigorous, and work should speak for itself.
-          I build dashboards, financial models, and research that actually get used.
-        </p>
-        <div className="hero-ctas">
-          <a href="#work" className="btn btn-primary magnetic">
-            <span className="btn-label">View My Work</span>
-            <span className="btn-arrow" aria-hidden="true">&darr;</span>
-          </a>
-          <a href="#contact" className="btn btn-ghost magnetic">
-            <span className="btn-label">Get In Touch</span>
-          </a>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-ghost magnetic"
-          >
-            <span className="btn-label">Resume</span>
-            <span className="btn-arrow" aria-hidden="true">&darr;</span>
+        <div className="hero-window-wrap">
+          <div className="hero-window">
+            {shots.map((s, i) => (
+              <img key={s.src} src={s.src} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+            ))}
+          </div>
+          <a href="#projects" className="hand hero-window-note">
+            three things I built for myself &darr;
           </a>
         </div>
       </div>
-
-      <div className="hero-marquee" aria-hidden="true">
-        <div className="hero-marquee-track">
-          <span>Bloomberg</span><span>·</span>
-          <span>Power BI</span><span>·</span>
-          <span>Python</span><span>·</span>
-          <span>R</span><span>·</span>
-          <span>SQL</span><span>·</span>
-          <span>Stata</span><span>·</span>
-          <span>Fixed Income</span><span>·</span>
-          <span>Credit Risk</span><span>·</span>
-          <span>Econometrics</span><span>·</span>
-          <span>Bloomberg</span><span>·</span>
-          <span>Power BI</span><span>·</span>
-          <span>Python</span><span>·</span>
-          <span>R</span><span>·</span>
-          <span>SQL</span><span>·</span>
-          <span>Stata</span><span>·</span>
-          <span>Fixed Income</span><span>·</span>
-          <span>Credit Risk</span><span>·</span>
-          <span>Econometrics</span><span>·</span>
-        </div>
-      </div>
-    </section>
+    </header>
   )
 }
 

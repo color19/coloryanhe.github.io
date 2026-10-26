@@ -1,58 +1,46 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+const links = [
+  { id: 'top', label: 'Home' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'work', label: 'Work' },
+  { id: 'contact', label: 'Contact' },
+]
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [active, setActive] = useState('top')
 
-  const links = [
-    { href: '#work', label: 'Work' },
-    { href: '#workspace', label: 'Setup' },
-    { href: '#about', label: 'About' },
-    { href: '#contact', label: 'Contact' },
-  ]
+  useEffect(() => {
+    const sections = links
+      .map((l) => document.getElementById(l.id))
+      .filter(Boolean)
 
-  const handleLinkClick = () => {
-    setMenuOpen(false)
-  }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id)
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <>
-      <nav className="navbar">
-        <a href="#top" className="nav-logo">
-          <span className="rainbow">Color(Yan)</span>
-          <span className="nav-logo-tail"> He</span>
-        </a>
-        <ul className="nav-links">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a href={link.href}>
-                <span className="nav-link-num" aria-hidden="true">
-                  ·
-                </span>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <button
-          className={`hamburger ${menuOpen ? 'active' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
+    <nav className="nav" aria-label="Primary">
+      {links.map((l) => (
+        <a
+          key={l.id}
+          href={`#${l.id}`}
+          className={active === l.id ? 'is-active' : undefined}
+          aria-current={active === l.id ? 'true' : undefined}
         >
-          <span />
-          <span />
-          <span />
-        </button>
-      </nav>
-
-      <div className={`mobile-nav ${menuOpen ? 'open' : ''}`}>
-        {links.map((link) => (
-          <a key={link.href} href={link.href} onClick={handleLinkClick}>
-            {link.label}
-          </a>
-        ))}
-      </div>
-    </>
+          {l.label}
+        </a>
+      ))}
+    </nav>
   )
 }
 

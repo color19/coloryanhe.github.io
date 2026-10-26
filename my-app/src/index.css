@@ -1,19 +1,30 @@
-/* ===== Color(Yan) He — Global Styles ===== */
+/* ===== Yan (Color) He — Global Styles ===== */
 
 :root {
-  /* Rainbow palette — five-elements balanced: red/orange muted, blue/green boosted */
-  --r: #d46a6a;
-  --o: #d49a50;
-  --y: #f5c800;
-  --g: #00d980;
-  --b: #2898ff;
-  --v: #a855f7;
+  --paper: #faf8f2;
+  --paper-2: #f3f0e7;
+  --ink: #0a0a0a;
+  --ink-soft: rgba(10, 10, 10, 0.64);
+  --ink-faint: rgba(10, 10, 10, 0.4);
+  --line: rgba(10, 10, 10, 0.1);
 
-  --bg: #0a0a0a;
-  --fg: #f0ede8;
-  --muted: #8a8a8a;
-  --card: #111;
-  --border: rgba(255, 255, 255, 0.08);
+  --navy: #0b1f3a;
+  --navy-deep: #071528;
+  --brick: #ce4631;
+
+  --sage: #e5ebe2;
+  --sage-ink: #2f4a3a;
+  --mist: #dbe5ef;
+
+  --sans: 'Host Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --hand: 'Caveat', cursive;
+
+  --radius: 24px;
+  --wrap: 1120px;
+  --gutter: clamp(20px, 5vw, 48px);
+
+  /* Paper grain, tiled under every light section */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,7 +32,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Reset ===== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -29,115 +39,43 @@
 }
 
 html {
-  /* Native smooth scroll competes with GSAP scrub. Leave it off for snappier scrub. */
-  scroll-behavior: auto;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: 'DM Mono', monospace;
-  font-weight: 300;
-  line-height: 1.6;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
   overflow-x: hidden;
 }
 
-@media (pointer: fine) {
-  body { cursor: none; }
-  a, button, [role="button"], input, textarea, select, label,
-  .btn, .nav-links a, .hamburger, .project, .project-tag {
-    cursor: none;
-  }
-}
-
-/* ===== Rainbow blended cursor + lerp follower ring ===== */
-.custom-cursor {
-  position: fixed;
-  top: 0; left: 0;
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: screen;
-  background: conic-gradient(var(--r), var(--o), var(--y), var(--g), var(--b), var(--v), var(--r));
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-              width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              height 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.custom-cursor.is-hover {
-  width: 8px; height: 8px;
-}
-
-.custom-cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(240, 237, 232, 0.35);
-  pointer-events: none;
-  z-index: 9998;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              background 0.3s ease;
-  will-change: transform;
-}
-
-.custom-cursor-ring.is-hover {
-  width: 56px; height: 56px;
-  border-color: rgba(240, 237, 232, 0.85);
-  background: rgba(240, 237, 232, 0.04);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .custom-cursor,
-  .custom-cursor-ring { display: none; }
-  body { cursor: auto; }
-}
-
-/* ===== Base Typography ===== */
-#root {
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'DM Serif Display', serif;
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--fg);
+h1, h2, h3 {
+  font-family: var(--sans);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
-ul { list-style: none; padding: 0; }
+ul, ol { list-style: none; }
 img { max-width: 100%; display: block; }
 
-/* ===== Rainbow Text Utility (used sparingly for the brand name only) ===== */
-.rainbow {
-  background: linear-gradient(90deg, var(--r), var(--o), var(--y), var(--g), var(--b), var(--v));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ===== Scrollbar — hidden (the spine is the progress indicator) ===== */
-html { scrollbar-width: none; -ms-overflow-style: none; }
-html::-webkit-scrollbar,
-body::-webkit-scrollbar { width: 0; height: 0; display: none; }
-
-/* ===== Selection ===== */
 ::selection {
-  background: rgba(40, 152, 255, 0.3);
-  color: #fff;
+  background: var(--navy);
+  color: var(--paper);
 }
 
-/* Disable cherry blossom petals if the user prefers reduced motion */
+:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .cherry-blossoms { display: none; }
+  html { scroll-behavior: auto; }
 }
