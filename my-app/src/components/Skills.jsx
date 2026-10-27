@@ -11,6 +11,8 @@ const WORKS = {
   runway: ['Runway', '#project-runway'],
   bond: ['Bond research', '#work-fixed-income'],
   ss: ['State Street pipelines', '#work-pipelines'],
+  afri: ['AfriLabs deal analytics', '#work-afrilabs'],
+  igi: ['Energy-storage report', '#work-igi'],
   ap: ['Asset pricing', '#work-asset-pricing'],
   panel: ['Panel data', '#work-panel'],
   dcf: ['Financial model', '#work-financial-model'],
@@ -19,8 +21,8 @@ const WORKS = {
 
 const GROUPS = [
   ['Data and code', [
-    ['Python', ['sc', 'bdc', 'rck', 'ss', 'ap']],
-    ['SQL', ['bdc', 'ss']],
+    ['Python', ['sc', 'bdc', 'rck', 'ss', 'afri', 'ap']],
+    ['SQL', ['bdc', 'ss', 'afri', 'bond']],
     ['R', ['bond', 'panel']],
     ['Stata', ['panel']],
     ['SAS', ['ap']],
@@ -40,11 +42,11 @@ const GROUPS = [
     ['Fixed income', ['bond']],
     ['DCF valuation', ['dcf']],
     ['Financial statement analysis', ['bdc']],
-    ['Research writing', ['bdc', 'rck']],
+    ['Research writing', ['bdc', 'rck', 'igi']],
   ]],
   ['Building', [
     ['Data visualization', ['bdc', 'rck', 'study', 'ap', 'dash']],
-    ['Power BI', ['dash']],
+    ['Power BI', ['ss', 'afri', 'dash']],
     ['Single-file web apps', ['study', 'runway']],
     ['Claude Code, Cursor', ['study']],
     ['Git, LaTeX', ['bdc']],

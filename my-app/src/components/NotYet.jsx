@@ -13,7 +13,7 @@ function NotYet() {
               and Studyroom is how I&rsquo;m getting ready.
             </p>
             <p>
-              I haven&rsquo;t held a full-time seat on a desk. Four internships
+              I haven&rsquo;t held a full-time seat on a desk. Three internships and a research post
               taught me how the work is done; they aren&rsquo;t a track record.
             </p>
             <p>
