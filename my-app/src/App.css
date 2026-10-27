@@ -775,150 +775,55 @@ button.btn-text { background: none; }
   text-align: right;
 }
 
-/* ===== Toolkit: skills x work dot matrix ===== */
+/* ===== Toolkit: skills as holdings ===== */
 .skills { margin-top: clamp(80px, 10vw, 120px); }
 
-.kit-scroll {
-  margin-top: 8px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.kit {
-  width: 100%;
-  min-width: 860px;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.kit th,
-.kit td { padding: 0; font-weight: 400; }
-
-.kit col.kit-c-name { width: 310px; }
-.kit col.kit-c-count { width: 110px; }
-
-/* group labels over the columns */
-.kit-groups th {
-  padding-bottom: 6px;
-  text-align: left;
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.kit-groups th span {
-  display: block;
-  margin: 0 4px;
-  padding-top: 6px;
-  border-top: 1.5px solid var(--line);
-}
-
-/* slanted column labels */
-.kit-cols th {
-  position: relative;
-  height: 118px;
-  vertical-align: bottom;
-}
-
-.kit-cols th a {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform-origin: left bottom;
-  transform: rotate(-42deg);
-  white-space: nowrap;
-  font-size: 12.5px;
-  color: var(--ink-soft);
-  transition: color 0.15s ease;
-}
-
-.kit-cols th a:hover,
-.kit-cols th.is-on a { color: var(--brick); }
-
-.kit-corner,
-.kit-count-h {
-  text-align: left;
-  font-size: 11px !important;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  padding-bottom: 10px !important;
-}
-
-/* group rows inside the body */
-.kit-group th {
-  padding: 22px 0 8px !important;
-  text-align: left;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
+.caps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 24px;
+  padding: 4px 0 28px;
   border-bottom: 1px solid var(--line);
 }
 
-.kit tbody tr:not(.kit-group) th,
-.kit tbody tr:not(.kit-group) td {
-  height: 38px;
-  border-bottom: 1px solid var(--line);
-  transition: background-color 0.15s ease;
-}
+.caps-col .eyebrow { margin-bottom: 14px; }
 
-.kit tbody tr:not(.kit-group) th {
-  padding-right: 12px;
-  text-align: left;
+.caps-col button {
+  all: unset;
   font-size: 15px;
+  line-height: 1.5;
+  padding: 3px 0;
   color: var(--ink);
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
 
-.kit tbody td { text-align: center; }
-
-.kit tbody tr.is-on th,
-.kit tbody tr.is-on td,
-.kit tbody td.is-col { background: rgba(206, 70, 49, 0.06); }
-
-.kit-dot {
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--brick);
-  box-shadow: 0 0 0 2px var(--paper);
-  vertical-align: middle;
-}
-
-.kit-empty {
-  display: inline-block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: #d6d1c4;
-  vertical-align: middle;
-}
-
-.kit-count {
-  text-align: left !important;
-  padding-left: 14px !important;
-  white-space: nowrap;
-}
-
-.kit-bar {
-  display: inline-block;
-  max-width: 64px;
-  height: 6px;
-  border-radius: 0 3px 3px 0;
-  background: var(--navy);
-  vertical-align: middle;
-}
-
-.kit-count b {
-  margin-left: 8px;
-  font-size: 13px;
-  font-weight: 500;
+.caps-col sup {
+  margin-left: 3px;
+  font-size: 10px;
+  color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
-  vertical-align: middle;
+}
+
+.caps.has-cur .caps-col button { opacity: 0.35; }
+.caps.has-cur .caps-col button.is-cur { opacity: 1; color: var(--brick); }
+.caps.has-cur .caps-col button.is-cur sup { color: var(--brick); }
+
+.caps-used {
+  grid-column: 1 / -1;
+  min-height: 1.6em;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.caps-used b { font-weight: 500; color: var(--brick); }
+.caps-used a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.caps-used a:hover { color: var(--brick); text-decoration-color: var(--brick); }
+
+@media (max-width: 800px) {
+  .caps { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
 }
 
 .skills-also {
@@ -935,18 +840,6 @@ button.btn-text { background: none; }
   margin-top: 10px;
   font-size: 14px;
   color: var(--ink-soft);
-}
-
-@media (max-width: 900px) {
-  .kit tbody tr:not(.kit-group) th,
-  .kit thead th:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-    background: var(--paper);
-  }
-  .kit col.kit-c-name { width: 200px; }
-  .kit tbody tr:not(.kit-group) th { font-size: 14px; }
 }
 
 /* ===== What I'm not, yet ===== */
