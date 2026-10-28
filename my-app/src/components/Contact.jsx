@@ -49,8 +49,11 @@ function Contact() {
       <div className="wrap">
         <h2 data-reveal>Let&rsquo;s talk.</h2>
         <p className="lede">
-          Open to investment banking, research, and quant roles. The fastest way
-          to reach me is email.
+          Open to markets research, quant, and FP&amp;A roles in New York or DC.
+          The fastest way to reach me is email.
+        </p>
+        <p className="contact-auth">
+          Eligible for up to 3 years of U.S. work authorization under STEM OPT.
         </p>
         <nav className="dock" aria-label="Contact links">
           {dock.map((d) => (

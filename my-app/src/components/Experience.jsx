@@ -1,7 +1,7 @@
 const stats = [
   { num: '1', text: 'published paper: the lead article in the first issue of JRAFE, the Johns Hopkins journal of graduate research in applied and financial economics.' },
   { num: '4.0', text: 'GPA, M.S. in Financial Economics at Johns Hopkins.' },
-  { num: '4', text: 'roles in finance and research, from Huatai’s bond desk to State Street and AfriLabs.' },
+  { num: '4', text: 'roles in finance and research, from Huatai’s fixed income research team to State Street and AfriLabs.' },
   { num: '30', text: 'versions of Studyroom, rebuilt around how I actually study.' },
 ]
 

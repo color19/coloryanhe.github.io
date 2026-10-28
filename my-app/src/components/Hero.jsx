@@ -32,7 +32,7 @@ function Hero() {
             </a>
             <a className="btn btn-text" href="mailto:yanhe2026@gmail.com">yanhe2026@gmail.com</a>
           </div>
-          <p className="hero-open eyebrow">Graduating December 2026 · open to investment banking, research &amp; quant roles</p>
+          <p className="hero-open eyebrow">Graduating December 2026 · open to markets research, quant and FP&amp;A roles · New&nbsp;York&nbsp;or&nbsp;DC</p>
         </div>
 
         <div className="hero-window-wrap">

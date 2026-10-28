@@ -5,7 +5,7 @@ const notes = [
   },
   {
     label: '02 · Where I’m going',
-    body: 'Onto a team in investment banking, research, or quant, where rigor is the baseline and the work has to make sense to people who didn’t build it.',
+    body: 'Onto a team in markets research, quant, or FP&A, where rigor is the baseline and the work has to make sense to people who didn’t build it. Longer term, I want to work on climate and green fixed income.',
   },
   {
     label: '03 · Why finance',

@@ -842,7 +842,7 @@ button.btn-text { background: none; }
   color: var(--ink-soft);
 }
 
-/* ===== What I'm not, yet ===== */
+/* ===== How I work ===== */
 .not-yet {
   padding: clamp(48px, 7vw, 80px) 0 clamp(112px, 14vw, 160px);
 }
@@ -854,17 +854,13 @@ button.btn-text { background: none; }
   padding: clamp(32px, 5vw, 56px);
   border-radius: var(--radius);
   background: var(--paper-2);
+  align-items: center;
   box-shadow: 0 14px 36px rgba(28, 24, 14, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .not-yet-card h2 {
   font-size: clamp(32px, 3.6vw, 42px);
   letter-spacing: -0.035em;
-}
-
-.not-yet-card .hand {
-  margin-top: 14px;
-  color: var(--brick);
 }
 
 .not-yet-body p {
@@ -900,6 +896,13 @@ button.btn-text { background: none; }
   max-width: 30em;
   font-size: 17.5px;
   color: rgba(250, 248, 242, 0.72);
+}
+
+.contact-auth {
+  margin: 10px auto 0;
+  max-width: 30em;
+  font-size: 14.5px;
+  color: rgba(250, 248, 242, 0.58);
 }
 
 .dock {
@@ -991,6 +994,8 @@ button.btn-text { background: none; }
 
   .hero-cred { flex-direction: column; }
   .hero-cred span + span::before { content: none; }
+
+  .mini-seg button { padding: 7px 9px; }
 
   .work-stats { grid-template-columns: 1fr; gap: 36px; }
 
