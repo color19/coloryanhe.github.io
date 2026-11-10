@@ -32,6 +32,13 @@
   letter-spacing: 0;
 }
 
+.if-touch { display: none; }
+
+@media (hover: none) {
+  .if-hover { display: none; }
+  .if-touch { display: inline; }
+}
+
 /* Scroll-driven reveal; content stays visible where unsupported */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
@@ -688,6 +695,7 @@ button.btn-text { background: none; }
   margin-top: 18px;
   font-size: 13.5px;
   color: var(--ink-soft);
+  overflow-x: auto;
 }
 
 .mini-table summary { cursor: pointer; width: fit-content; }

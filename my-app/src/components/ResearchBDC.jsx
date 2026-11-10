@@ -106,8 +106,9 @@ function Panel({ spec, hover, setHover, showEventLabels }) {
         role="img"
         aria-label={`${spec.title}, BDC sector median by quarter, 2005 to 2025`}
         tabIndex={0}
+        onPointerDown={onMove}
         onPointerMove={onMove}
-        onPointerLeave={() => setHover(null)}
+        onPointerLeave={(e) => e.pointerType === 'mouse' && setHover(null)}
         onKeyDown={onKey}
         onBlur={() => setHover(null)}
       >

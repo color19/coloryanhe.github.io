@@ -94,8 +94,9 @@ function CurvePanel({ hover, setHover }) {
         role="img"
         aria-label="Probability of default by score, with the three cutoffs"
         tabIndex={0}
+        onPointerDown={onMove}
         onPointerMove={onMove}
-        onPointerLeave={() => setHover(null)}
+        onPointerLeave={(e) => e.pointerType === 'mouse' && setHover(null)}
         onKeyDown={onKey}
         onBlur={() => setHover(null)}
       >

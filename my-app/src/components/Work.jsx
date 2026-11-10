@@ -40,7 +40,7 @@ function Work() {
       <div className="wrap">
         <div className="research-section-head" data-reveal>
           <h2>Research</h2>
-          <span className="hand">hover the charts, they&rsquo;re live</span>
+          <span className="hand"><span className="if-hover">hover</span><span className="if-touch">tap</span> the charts, they&rsquo;re live</span>
         </div>
         <ResearchScorecard />
         <ResearchBDC />

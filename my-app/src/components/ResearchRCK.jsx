@@ -96,8 +96,9 @@ function Panel({ spec, base, cur, hoverT, setHoverT }) {
         role="img"
         aria-label={`${spec.title} over ${T_SHOW} periods`}
         tabIndex={0}
+        onPointerDown={onMove}
         onPointerMove={onMove}
-        onPointerLeave={() => setHoverT(null)}
+        onPointerLeave={(e) => e.pointerType === 'mouse' && setHoverT(null)}
         onKeyDown={onKey}
         onBlur={() => setHoverT(null)}
       >

@@ -59,7 +59,7 @@ function Skills() {
     <div className="skills" id="skills">
       <div className="work-list-head" data-reveal>
         <h2>Capabilities</h2>
-        <span className="hand">hover one to see where it&rsquo;s used</span>
+        <span className="hand"><span className="if-hover">hover</span><span className="if-touch">tap</span> one to see where it&rsquo;s used</span>
       </div>
       <div className={`caps${cur ? ' has-cur' : ''}`} data-reveal onMouseLeave={() => setCur(null)}>
         {GROUPS.map(([name, items]) => (
